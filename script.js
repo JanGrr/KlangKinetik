@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var accelerationXElement = document.getElementById('accelerationX');
-    var accelerationYElement = document.getElementById('accelerationY');
-    var accelerationZElement = document.getElementById('accelerationZ');
-    var totalAccelerationElement = document.getElementById('totalAcceleration');
+    var audioPlayer = document.getElementById('audioPlayer');
+    var accelerationX = document.getElementById('accelerationX');
+    var accelerationY = document.getElementById('accelerationY');
+    var accelerationZ = document.getElementById('accelerationZ');
+    var totalAcceleration = document.getElementById('totalAcceleration');
 
     window.addEventListener('devicemotion', handleMotion);
 
@@ -10,11 +11,19 @@ document.addEventListener('DOMContentLoaded', function () {
         var acceleration = event.accelerationIncludingGravity;
 
         // Zeige die Beschleunigungswerte an
-        accelerationXElement.textContent = acceleration.x.toFixed(2);
-        accelerationYElement.textContent = acceleration.y.toFixed(2);
-        accelerationZElement.textContent = acceleration.z.toFixed(2);
+        accelerationX.textContent = acceleration.x.toFixed(2);
+        accelerationY.textContent = acceleration.y.toFixed(2);
+        accelerationZ.textContent = acceleration.z.toFixed(2);
 
-        var totalAcceleration = Math.abs(acceleration.x) + Math.abs(acceleration.y) + Math.abs(acceleration.z);
-        totalAccelerationElement.textContent = totalAcceleration.toFixed(2);
+        var totalAccelerationMath = Math.abs(acceleration.x) + Math.abs(acceleration.y) + Math.abs(acceleration.z);
+        totalAcceleration.textContent = totalAccelerationMath.toFixed(2);
+
+        /*var playbackSpeed = calculatePlaybackSpeed(totalAccelerationMath);
+        audioPlayer.playbackRate = playbackSpeed;*/
     }
+
+    /*function calculatePlaybackSpeed(totalAcceleration) {
+        return (totalAcceleration / 10) - 1;
+    }*/
+
 });
