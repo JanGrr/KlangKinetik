@@ -17,23 +17,21 @@ document.addEventListener('DOMContentLoaded', function () {
         accelerationZ.textContent = acceleration.z.toFixed(2);
 
         var playbackSpeed = Math.abs(acceleration.x) + Math.abs(acceleration.y) + Math.abs(acceleration.z);
-        playbackSpeed /= 2;
+        //console.log("playbackSpeed 1: " + playbackSpeed);
+        playbackSpeed /= 5;
         totalAcceleration.textContent = playbackSpeed.toFixed(2);
 
         if(!start) {
-            console.log("start: " + start);
             if (playbackSpeed > 1) {
                 start = true;
                 audioPlayer.play();
             }
-        } else if (playbackSpeed > 0.4) {
-            console.log("playbackSpeed: " + playbackSpeed);
+        } else if (playbackSpeed > 0.2) {
             audioPlayer.play();
             audioPlayer.playbackRate = playbackSpeed;
             var volume = Math.min(1, playbackSpeed);
             audioPlayer.volume = volume;
         } else {
-            console.log("paused");
             audioPlayer.pause();
         }
     }
