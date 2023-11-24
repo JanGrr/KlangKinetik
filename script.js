@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('devicemotion', handleMotion);
 
     function handleMotion(event) {
-        var acceleration = event.accelerationIncludingGravity;
+        var acceleration = event.acceleration;
 
         // Zeige die Beschleunigungswerte an
         accelerationX.textContent = acceleration.x.toFixed(2);
