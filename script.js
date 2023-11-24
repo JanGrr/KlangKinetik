@@ -1,15 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
     var audioPlayer = document.getElementById('audioPlayer');
+    var accelerationXElement = document.getElementById('accelerationX');
+    var accelerationYElement = document.getElementById('accelerationY');
+    var accelerationZElement = document.getElementById('accelerationZ');
 
-    function handleFileSelect(input) {
-        var file = input.files[0];
+    window.addEventListener('devicemotion', handleMotion);
 
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            audioPlayer.src = e.target.result;
-            audioPlayer.play();
-        };
+    function handleMotion(event) {
+        var acceleration = event.accelerationIncludingGravity;
 
-        reader.readAsDataURL(file);
+        // Zeige die Beschleunigungswerte an
+        accelerationXElement.textContent = acceleration.x.toFixed(2);
+        accelerationYElement.textContent = acceleration.y.toFixed(2);
+        accelerationZElement.textContent = acceleration.z.toFixed(2);
     }
 });
