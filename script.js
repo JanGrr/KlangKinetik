@@ -14,4 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
         accelerationYElement.textContent = acceleration.y.toFixed(2);
         accelerationZElement.textContent = acceleration.z.toFixed(2);
     }
+
+    setInterval(function () {
+        window.dispatchEvent(new Event('devicemotion'));
+    }, 250);
 });
