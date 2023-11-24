@@ -18,12 +18,20 @@ document.addEventListener('DOMContentLoaded', function () {
         var totalAccelerationMath = Math.abs(acceleration.x) + Math.abs(acceleration.y) + Math.abs(acceleration.z);
         totalAcceleration.textContent = totalAccelerationMath.toFixed(2);
 
-        /*var playbackSpeed = calculatePlaybackSpeed(totalAccelerationMath);
-        audioPlayer.playbackRate = playbackSpeed;*/
+        var playbackSpeed = totalAccelerationMath;
+        audioPlayer.playbackRate = playbackSpeed;
+
+        var volume = Math.min(1, playbackSpeed);
+        audioPlayer.volume = volume;
+
+        console.log("Total Acceleration: " + totalAccelerationMath);
+        console.log("Playback Speed: " + playbackSpeed);
+
+        if (audioPlayer.paused) {
+            if (totalAccelerationMath > 1) {
+                console.log("Starting playback.");
+                audioPlayer.play();
+            }
+        }
     }
-
-    /*function calculatePlaybackSpeed(totalAcceleration) {
-        return (totalAcceleration / 10) - 1;
-    }*/
-
 });
