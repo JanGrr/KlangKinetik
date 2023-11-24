@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var audioPlayer = document.getElementById('audioPlayer');
     var accelerationXElement = document.getElementById('accelerationX');
     var accelerationYElement = document.getElementById('accelerationY');
     var accelerationZElement = document.getElementById('accelerationZ');
+    var totalAccelerationElement = document.getElementById('totalAcceleration');
 
     window.addEventListener('devicemotion', handleMotion);
 
@@ -13,9 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
         accelerationXElement.textContent = acceleration.x.toFixed(2);
         accelerationYElement.textContent = acceleration.y.toFixed(2);
         accelerationZElement.textContent = acceleration.z.toFixed(2);
-    }
 
-    setInterval(function () {
-        window.dispatchEvent(new Event('devicemotion'));
-    }, 250);
+        var totalAcceleration = Math.abs(acceleration.x) + Math.abs(acceleration.y) + Math.abs(acceleration.z);
+        totalAccelerationElement.textContent = totalAcceleration.toFixed(2);
+    }
 });
