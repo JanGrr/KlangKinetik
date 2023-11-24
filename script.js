@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var accelerationY = document.getElementById('accelerationY');
     var accelerationZ = document.getElementById('accelerationZ');
     var totalAcceleration = document.getElementById('totalAcceleration');
+    var start = false;
 
     window.addEventListener('devicemotion', handleMotion);
 
@@ -18,21 +19,21 @@ document.addEventListener('DOMContentLoaded', function () {
         var playbackSpeed = Math.abs(acceleration.x) + Math.abs(acceleration.y) + Math.abs(acceleration.z);
         totalAcceleration.textContent = playbackSpeed.toFixed(2);
 
-        if (playbackSpeed > 0.4) {
-            audioPlayer.playbackRate = playbackSpeed;
-        }
-        
-        var volume = Math.min(1, playbackSpeed);
-        audioPlayer.volume = volume;
-
-        console.log("Total Acceleration: " + playbackSpeed);
-        console.log("Playback Speed: " + playbackSpeed);
-
-        if (audioPlayer.paused) {
+        if(!start) {
+            console.log("start: " + start);
             if (playbackSpeed > 1) {
-                console.log("Starting playback.");
+                start = true;
                 audioPlayer.play();
             }
+        } else if (playbackSpeed > 0.4) {
+            console.log("playbackSpeed: " + playbackSpeed);
+            audioPlayer.play();
+            audioPlayer.playbackRate = playbackSpeed;
+            var volume = Math.min(1, playbackSpeed);
+            audioPlayer.volume = volume;
+        } else {
+            console.log("paused");
+            audioPlayer.pause();
         }
     }
 });
