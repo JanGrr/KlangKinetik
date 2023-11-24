@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         accelerationZ.textContent = acceleration.z.toFixed(2);
 
         var playbackSpeed = Math.abs(acceleration.x) + Math.abs(acceleration.y) + Math.abs(acceleration.z);
+        playbackSpeed /= 2;
         totalAcceleration.textContent = playbackSpeed.toFixed(2);
 
         if(!start) {
