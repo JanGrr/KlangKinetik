@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var totalAccelerationMath = Math.abs(acceleration.x) + Math.abs(acceleration.y) + Math.abs(acceleration.z);
         totalAcceleration.textContent = totalAccelerationMath.toFixed(2);
 
-        var playbackSpeed = totalAccelerationMath;
-        audioPlayer.playbackRate = playbackSpeed;
-
+        if (playbackSpeed > 0.4) {
+            audioPlayer.playbackRate = totalAccelerationMath;
+        }
+        
         var volume = Math.min(1, playbackSpeed);
         audioPlayer.volume = volume;
 
