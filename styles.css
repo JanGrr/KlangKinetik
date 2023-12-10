@@ -35,7 +35,7 @@ audio {
     height: 150px;
     margin-top: 50vh auto 0;
     transform-style: preserve-3d;
-    transform: rotateY(180deg);
+    transform: rotateX(180deg);
 }
 
 #phone {
