@@ -2,7 +2,7 @@
 <html lang="de">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Eine Seite über Mobile Computing und IoT.">
     <meta name="keywords" content="HTML, CSS, Javascript">
@@ -10,21 +10,20 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
 </head>
-
 <body>
     <div class="container">
         <h1>KlangKinetik Player 1</h1>
-        <div id="accelerationValues">
-            <p>Beschleunigung X: <span id="accelerationX">0</span></p>
-            <p>Beschleunigung Y: <span id="accelerationY">0</span></p>
-            <p>Beschleunigung Z: <span id="accelerationZ">0</span></p>
-            <p>Gesamtbeschleunigung <span id="totalAcceleration">0</span></p>
+
+        <div id="gyroValues">
+            <p>Alpha: <span id="alphaValue">0</span></p>
+            <p>Beta: <span id="betaValue">0</span></p>
+            <p>Gamma: <span id="gammaValue">0</span></p>
         </div>
+
         <audio id="audioPlayer" controls>
             <source src="Song.mp3" type="audio/mp3">
             Your browser does not support the audio tag.
         </audio>
     </div>
 </body>
-
 </html>
