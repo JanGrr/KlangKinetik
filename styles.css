@@ -33,9 +33,9 @@ audio {
 #phoneContainer {
     width: 100px;
     height: 150px;
-    margin-top: 50px;
+    margin-top: 50vh auto 0;
     transform-style: preserve-3d;
-    animation: rotateAnimation 3s infinite linear;
+    transform: rotateY(180deg);
 }
 
 #phone {
