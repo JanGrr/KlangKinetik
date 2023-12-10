@@ -11,4 +11,8 @@ function handleOrientation(event) {
     document.getElementById('alphaValue').innerText = alpha.toFixed(2);
     document.getElementById('betaValue').innerText = beta.toFixed(2);
     document.getElementById('gammaValue').innerText = gamma.toFixed(2);
+
+    // Aktualisiere die 3D-Animation
+    var phoneContainer = document.getElementById('phoneContainer');
+    document.getElementById('phoneContainer').style.transform = `rotateX(${beta}deg) rotateY(${gamma}deg) rotateZ(${alpha}deg)`;
 }
