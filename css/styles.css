@@ -1,15 +1,42 @@
-/* Gemeinsame CSS-Stile */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 100vh;
-    background-color: #f0f0f0;
 }
 
-h1 {
-    color: #333;
+#container {
+    text-align: center;
+}
+
+#header {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#stage {
+    width: 200px; /* Breite der Bühne */
+    height: 100px; /* Höhe der Bühne */
+    background-color: #333; /* Ändere die Hintergrundfarbe der Bühne */
+    position: relative;
+    margin-top: 20px;
+    transform-origin: center center;
+}
+
+#stage:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #f1c2c2; /* Farbe des Bühnen-Elements */
+    display: block;
+}
+
+#rotation-output {
+    margin-top: 20px;
+}
+
+#playButton {
+    font-size: 16px;
+    margin-top: 10px;
 }
