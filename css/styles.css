@@ -4,6 +4,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    perspective: 1000px; /* Füge eine Perspektive hinzu */
 }
 
 #container {
@@ -22,14 +23,25 @@ body {
     position: relative;
     margin-top: 20px;
     transform-origin: center center;
+    transform-style: preserve-3d; /* Behalte die 3D-Transformation bei */
+    animation: rotateStage 2s infinite linear; /* Füge eine Rotation hinzu */
 }
 
 #stage:before {
     content: "";
     width: 100%;
     height: 100%;
-    background-color: #f1c2c2; /* Farbe des Bühnen-Elements */
+    background-color: #fff; /* Farbe des Bühnen-Elements */
     display: block;
+}
+
+@keyframes rotateStage {
+    from {
+        transform: rotateY(0deg); /* Startrotation */
+    }
+    to {
+        transform: rotateY(360deg); /* Endrotation */
+    }
 }
 
 #rotation-output {
