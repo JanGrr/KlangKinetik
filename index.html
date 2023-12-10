@@ -4,31 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Eine Seite über Mobile Computing und IoT.">
-    <meta name="keywords" content="HTML, CSS, Javascript">
-    <title>KlangKinetik</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <title>Projekt</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
-    <div class="container">
-        <h1>KlangKinetik Player 1</h1>
+    <script>
+        // Weiterleitung basierend auf Gerätetyp
+        if (/Android|iPhone/i.test(navigator.userAgent)) {
+            window.location.href = 'mobile.html';
+        } else {
+            window.location.href = 'pc.html';
+        }
+    </script>
 
-        <div id="gyroValues">
-            <p>Alpha: <span id="alphaValue">0</span></p>
-            <p>Beta 1: <span id="betaValue">0</span></p>
-            <p>Gamma: <span id="gammaValue">0</span></p>
-        </div>
+    <script src="https://cdn.jsdelivr.net/npm/ws@8.0.0/dist/browser.js"></script>
 
-        <audio id="audioPlayer" controls>
-            <source src="Song.mp3" type="audio/mp3">
-            Your browser does not support the audio tag.
-        </audio>
-
-        <div id="phoneContainer">
-            <div id="phone"></div>
-        </div>
-
-    </div>
 </body>
+
 </html>

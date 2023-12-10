@@ -14,5 +14,5 @@ function handleOrientation(event) {
 
     // Aktualisiere die 3D-Animation
     var phoneContainer = document.getElementById('phoneContainer');
-    document.getElementById('phoneContainer').style.transform = `rotateX(${beta}deg) rotateY(${gamma}deg) rotateZ(${alpha}deg)`;
+    document.getElementById('phoneContainer').style.transform = `rotateX(${beta}deg) rotateY(${gamma}deg) rotateZ(${-alpha}deg)`;
 }
