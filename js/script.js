@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const beta = event.beta || 0;   // X-Rotation
         const gamma = event.gamma || 0; // Y-Rotation
 
-        // Update the stage rotation based on device orientation
-        const rotationValue = -gamma; // Umkehrung für die gewünschte Richtung
-        stage.style.transform = `rotateY(${rotationValue}deg)`;
+        // Update the stage position based on device orientation
+        const shiftValue = gamma; // Verwende den Gamma-Wert für die Verschiebung
+        stage.style.transform = `translateX(${shiftValue}px)`;
 
         // Output the rotation values
         rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
