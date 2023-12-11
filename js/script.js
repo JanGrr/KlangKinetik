@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let isMusicPlaying = false;
 
     window.addEventListener('deviceorientation', handleOrientation);
-
+    gammaSlider.addEventListener('input', handleGammaSlider);
     playButton.addEventListener('click', toggleMusic);
 
     function handleOrientation(event) {
@@ -14,12 +14,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const beta = event.beta || 0;   // X-Rotation
         const gamma = event.gamma || 0; // Y-Rotation
 
-        // Update the stage position based on device orientation
-        const shiftValue = gamma; // Verwende den Gamma-Wert für die Verschiebung
-        stage.style.transform = `translateX(${shiftValue}px)`;
+        // Verwende den Gamma-Wert aus dem Slider oder den vom Gyroskop
+        const shiftValue = gammaSlider.value || gamma;
+        stage.style.left = `${shiftValue}px`;
 
         // Output the rotation values
         rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
+    }
+
+    function handleGammaSlider() {
+        // Aktualisiere die Position basierend auf dem Slider-Wert
+        const shiftValue = gammaSlider.value;
+        stage.style.left = `${shiftValue}px`;
     }
 
     function toggleMusic() {
