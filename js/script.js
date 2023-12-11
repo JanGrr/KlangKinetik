@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleAlphaSlider() {
         // Aktualisiere die Position basierend auf dem Slider-Wert
-        const shiftPercentage = alphaSlider.value*2 - 360; // Umrechnung in Prozent
+        const shiftPercentage = alphaSlider.value*4 - 720; // Umrechnung in Prozent
         stage.style.left = `${shiftPercentage}%`;
     }
 
