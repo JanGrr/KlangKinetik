@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const gamma = event.gamma || 0; // Y-Rotation
 
         // Update the stage rotation based on device orientation
-        stage.style.transform = `rotateX(${beta}deg) rotateY(${gamma}deg) rotateZ(${alpha}deg)`;
+        const rotationValue = -gamma; // Umkehrung für die gewünschte Richtung
+        stage.style.transform = `rotateY(${rotationValue}deg)`;
 
         // Output the rotation values
         rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
