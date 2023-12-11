@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let isMusicPlaying = false;
 
     window.addEventListener('deviceorientation', handleOrientation);
-    gammaSlider.addEventListener('input', handleGammaSlider);
+    alphaSlider.addEventListener('input', handleAlphaSlider);
     playButton.addEventListener('click', toggleMusic);
 
     function handleOrientation(event) {
@@ -14,18 +14,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const beta = event.beta || 0;   // X-Rotation
         const gamma = event.gamma || 0; // Y-Rotation
 
-        // Verwende den Gamma-Wert aus dem Slider oder den vom Gyroskop
-        const shiftValue = gammaSlider.value || gamma;
-        stage.style.left = `${shiftValue}px`;
+        // Verwende den Alpha-Wert aus dem Slider oder den vom Gyroskop
+        const shiftPercentage = (alphaSlider.value || alpha) / 360 * 100; // Umrechnung in Prozent
+        stage.style.left = `${shiftPercentage}%`;
 
         // Output the rotation values
         rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
     }
 
-    function handleGammaSlider() {
+    function handleAlphaSlider() {
         // Aktualisiere die Position basierend auf dem Slider-Wert
-        const shiftValue = gammaSlider.value;
-        stage.style.left = `${shiftValue}px`;
+        const shiftPercentage = alphaSlider.value*2 - 360; // Umrechnung in Prozent
+        stage.style.left = `${shiftPercentage}%`;
     }
 
     function toggleMusic() {
