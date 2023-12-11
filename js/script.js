@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const gamma = event.gamma || 0; // Y-Rotation
 
         // Verwende den Alpha-Wert aus dem Slider oder den vom Gyroskop
-        const shiftPercentage = (alphaSlider.value || alpha) / 360 * 100; // Umrechnung in Prozent
+        const shiftPercentage = (alphaSlider.value || alpha)*4 - 720; // Umrechnung in Prozent
         stage.style.left = `${shiftPercentage}%`;
 
         // Output the rotation values
