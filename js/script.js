@@ -2,12 +2,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const stage = document.getElementById('stage');
     const playButton = document.getElementById('playButton');
     const rotationOutput = document.getElementById('rotation-output');
-    const music = new Audio('Audio/Song.mp3');
+    const alphaSlider = document.getElementById('alphaSlider');
+    const panSlider = document.getElementById('panSlider');
+
     let isMusicPlaying = false;
+    let audioContext, panNode, music;
 
     window.addEventListener('deviceorientation', handleOrientation);
     alphaSlider.addEventListener('input', handleAlphaSlider);
-    playButton.addEventListener('click', toggleMusic);
+    panSlider.addEventListener('input', handlePanSlider);
+    
+    playButton.addEventListener('click', function() {
+        if (!isMusicPlaying) {
+            initAudio();
+        }
+        toggleMusic();
+    });
+
+    function initAudio() {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        panNode = audioContext.createStereoPanner();
+        music = new Audio('Audio/Song.mp3');
+        const source = audioContext.createMediaElementSource(music);
+        source.connect(panNode);
+        panNode.connect(audioContext.destination);
+    }
 
     function handleOrientation(event) {
         const alpha = event.alpha || 0; // Z-Rotation
@@ -28,6 +47,12 @@ document.addEventListener('DOMContentLoaded', function() {
         stage.style.left = `${shiftPercentage}%`;
     }
 
+    function handlePanSlider() {
+        // Aktualisiere die Pan-Position basierend auf dem Slider-Wert
+        const panValue = (panSlider.value - 50) / 50; // Bereich: -1 bis 1
+        panNode.pan.value = panValue;
+    }
+
     function toggleMusic() {
         if (isMusicPlaying) {
             // Stop the music
@@ -37,9 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
             playButton.innerText = 'Play';
         } else {
             // Start the music
-            music.play();
-            isMusicPlaying = true;
-            playButton.innerText = 'Pause';
+            audioContext.resume().then(() => {
+                music.play();
+                isMusicPlaying = true;
+                playButton.innerText = 'Pause';
+            });
         }
     }
 });
