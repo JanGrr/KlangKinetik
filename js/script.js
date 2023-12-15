@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function initAudio() {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
         panNode = audioContext.createStereoPanner();
-        music = new Audio('Audio/song.mp3');
+        music = new Audio('Audio/Song.mp3');
         const source = audioContext.createMediaElementSource(music);
         source.connect(panNode);
         panNode.connect(audioContext.destination);
