@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function initAudio() {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
         panNode = audioContext.createStereoPanner();
-        music = new Audio('Audio/binaural_song.mp3');
+        music = new Audio('Audio/song.mp3');
         const source = audioContext.createMediaElementSource(music);
         source.connect(panNode);
         panNode.connect(audioContext.destination);
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const gamma = event.gamma || 0; // Y-Rotation
 
         // Verwende den Alpha-Wert aus dem Slider oder den vom Gyroskop
-        const shiftPercentage = (alphaSlider.value || alpha)*4 - 720; // Umrechnung in Prozent
+        const shiftPercentage = ((alphaSlider.value || alpha)-180)*4; // Umrechnung in Prozent
         stage.style.left = `${shiftPercentage}%`;
 
         // Output the rotation values
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleAlphaSlider() {
         // Aktualisiere die Position basierend auf dem Slider-Wert
-        const shiftPercentage = alphaSlider.value*4 - 720; // Umrechnung in Prozent
+        const shiftPercentage = (alphaSlider.value-180)*4; // Umrechnung in Prozent
         stage.style.left = `${shiftPercentage}%`;
     }
 
@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Aktualisiere die Pan-Position basierend auf dem Slider-Wert
         const panValue = (panSlider.value - 50) / 50; // Bereich: -1 bis 1
         panNode.pan.value = panValue;
+        //const panValue = (panSlider.value - 50) / 50; // Bereich: -1 bis 1
+        //panNode.pan.value = panValue;
     }
 
     function toggleMusic() {
