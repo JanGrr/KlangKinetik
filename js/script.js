@@ -49,8 +49,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
             debug.innerText = `Schritt 2`;
             alpha += 180;
-            rotationOutput.innerText = `Alpha neu: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
+            if (alpha > 360) {
+                alpha -= 360;
+            }
             debug.innerText = `Schritt 3`;
+            rotationOutput.innerText = `Alpha neu: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
+            debug.innerText = `Schritt 4`;
         } else {
             rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
         }
