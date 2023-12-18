@@ -41,12 +41,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('deviceorientation', handleOrientation);
     function handleOrientation(event) {
+        debug.innerText = `Aufruf handleOrientation`;
         const alpha = event.alpha; // Z-Rotation
         const beta = event.beta;   // X-Rotation
         const gamma = event.gamma; // Y-Rotation
 
-        debug.innerText = `Schritt 1`;
-        if (gamma <= 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
+        if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
             debug.innerText = `Schritt 2`;
             alpha += 180;
             rotationOutput.innerText = `Alpha neu: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
