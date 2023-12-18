@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const beta = event.beta;   // X-Rotation
         const gamma = event.gamma; // Y-Rotation
 
-        if (gamma < -90) { // to bypass 'gimbal lock' problem of Euler angles
-            alpha = alpha + 180;
+        if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
+            alpha += 180;
         }
 
         const shiftPercentage = (alpha-180);
