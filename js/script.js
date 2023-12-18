@@ -43,9 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const alpha = event.alpha; // Z-Rotation
         const beta = event.beta;   // X-Rotation
         const gamma = event.gamma; // Y-Rotation
-        
-        // Verwende den Alpha-Wert aus dem Slider oder den vom Gyroskop
-        //const shiftPercentage = ((alphaSlider.value || alpha)-180)*4; // Umrechnung in Prozent
+
+        if (gamma < -90) { // to bypass 'gimbal lock' problem of Euler angles
+            alpha = alpha + 180;
+        }
+
         const shiftPercentage = (alpha-180);
         stage.style.left = `${shiftPercentage}%`;
         panNode.pan.value = (alpha-180)/180; // Bereich: -1 bis 1
