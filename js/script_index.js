@@ -13,3 +13,4 @@ const viewer = new PANOLENS.Viewer({
 })
 
 viewer.add(panoramaImage)
+viewer.enableControl(1);
