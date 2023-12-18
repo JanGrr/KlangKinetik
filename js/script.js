@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('deviceorientation', handleOrientation);
     function handleOrientation(event) {
-        debug.innerText = `Aufruf handleOrientation`;
-        const alpha = event.alpha; // Z-Rotation 
+        debug.innerText = `Aufruf handleOrientation 1`;
+        let alpha = event.alpha; // Z-Rotation 
         const beta = event.beta;   // X-Rotation
         const gamma = event.gamma; // Y-Rotation
 
