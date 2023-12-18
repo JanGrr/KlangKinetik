@@ -1,5 +1,5 @@
 function redirectToKlangKinetik() {
-    window.location.href = 'KlangKinetik.html';
+    window.location.href = 'klangkinetic.html';
 }
 
 function redirectToIndex() {
