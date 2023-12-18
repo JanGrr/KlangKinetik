@@ -5,14 +5,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const alphaSlider = document.getElementById('alphaSlider');
     const panSlider = document.getElementById('panSlider');
 
+    let isMusicInitialized = false;
     let isMusicPlaying = false;
     let audioContext, panNode, music;
     
     playButton.addEventListener('click', function() {
-        if (!isMusicPlaying) {
+        if (!isMusicInitialized) {
             initAudio();
         }
-        toggleMusic();
+        if (isMusicPlaying) {
+            music.pause();
+            isMusicPlaying = false;
+            playButton.innerText = 'Play';
+        } else {
+            audioContext.resume().then(() => {
+                music.play();
+                isMusicPlaying = true;
+                playButton.innerText = 'Pause';
+            });
+        }
+
     });
 
     function initAudio() {
@@ -35,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const shiftPercentage = (alpha-180);
         stage.style.left = `${shiftPercentage}%`;
         panNode.pan.value = (alpha-180)/360; // Bereich: -1 bis 1
-        
+
         // Output the rotation values
         rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
     }
@@ -52,22 +64,5 @@ document.addEventListener('DOMContentLoaded', function() {
         // Aktualisiere die Pan-Position basierend auf dem Slider-Wert
         const panValue = (panSlider.value - 50) / 50; // Bereich: -1 bis 1
         panNode.pan.value = panValue;
-    }
-
-    function toggleMusic() {
-        if (isMusicPlaying) {
-            // Stop the music
-            music.pause();
-            music.currentTime = 0; // Zurückspulen zum Anfang
-            isMusicPlaying = false;
-            playButton.innerText = 'Play';
-        } else {
-            // Start the music
-            audioContext.resume().then(() => {
-                music.play();
-                isMusicPlaying = true;
-                playButton.innerText = 'Pause';
-            });
-        }
     }
 });
