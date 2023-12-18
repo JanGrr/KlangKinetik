@@ -7,10 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let isMusicPlaying = false;
     let audioContext, panNode, music;
-
-    window.addEventListener('deviceorientation', handleOrientation);
-    alphaSlider.addEventListener('input', handleAlphaSlider);
-    panSlider.addEventListener('input', handlePanSlider);
     
     playButton.addEventListener('click', function() {
         if (!isMusicPlaying) {
@@ -28,31 +24,33 @@ document.addEventListener('DOMContentLoaded', function() {
         panNode.connect(audioContext.destination);
     }
 
+    window.addEventListener('deviceorientation', handleOrientation);
     function handleOrientation(event) {
-        const alpha = event.alpha || 0; // Z-Rotation
-        const beta = event.beta || 0;   // X-Rotation
-        const gamma = event.gamma || 0; // Y-Rotation
-
+        //const alpha = event.alpha || 0; // Z-Rotation
+        //const beta = event.beta || 0;   // X-Rotation
+        //const gamma = event.gamma || 0; // Y-Rotation
+        
         // Verwende den Alpha-Wert aus dem Slider oder den vom Gyroskop
-        const shiftPercentage = ((alphaSlider.value || alpha)-180)*4; // Umrechnung in Prozent
+        //const shiftPercentage = ((alphaSlider.value || alpha)-180)*4; // Umrechnung in Prozent
+        const shiftPercentage = (event.alpha-180)*4;
         stage.style.left = `${shiftPercentage}%`;
 
         // Output the rotation values
         rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
     }
 
+    alphaSlider.addEventListener('input', handleAlphaSlider);
     function handleAlphaSlider() {
         // Aktualisiere die Position basierend auf dem Slider-Wert
         const shiftPercentage = (alphaSlider.value-180)*4; // Umrechnung in Prozent
         stage.style.left = `${shiftPercentage}%`;
     }
 
+    panSlider.addEventListener('input', handlePanSlider);
     function handlePanSlider() {
         // Aktualisiere die Pan-Position basierend auf dem Slider-Wert
         const panValue = (panSlider.value - 50) / 50; // Bereich: -1 bis 1
         panNode.pan.value = panValue;
-        //const panValue = (panSlider.value - 50) / 50; // Bereich: -1 bis 1
-        //panNode.pan.value = panValue;
     }
 
     function toggleMusic() {
