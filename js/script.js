@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     playButton.addEventListener('click', function() {
         if (!isMusicInitialized) {
             initAudio();
+            isMusicInitialized = true;
         }
         if (isMusicPlaying) {
             music.pause();
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //const shiftPercentage = ((alphaSlider.value || alpha)-180)*4; // Umrechnung in Prozent
         const shiftPercentage = (alpha-180);
         stage.style.left = `${shiftPercentage}%`;
-        panNode.pan.value = (alpha-180)/360; // Bereich: -1 bis 1
+        panNode.pan.value = (alpha-180)/180; // Bereich: -1 bis 1
 
         // Output the rotation values
         rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
