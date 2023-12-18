@@ -42,32 +42,26 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('deviceorientation', handleOrientation);
     function handleOrientation(event) {
         debug.innerText = `Aufruf handleOrientation`;
-        let alpha = event.alpha; // Z-Rotation
+        const alpha = event.alpha; // Z-Rotation 
         const beta = event.beta;   // X-Rotation
         const gamma = event.gamma; // Y-Rotation
 
         if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
-            debug.innerText = `Schritt 2`;
             if (alpha < 180) {
                 alpha += 180;
-                debug.innerText = `Schritt 3`;
             } else {
                 alpha -= 180;
-                debug.innerText = `Schritt 4`;
             }
-            debug.innerText = `Schritt 5`;
-            rotationOutput.innerText = `Alpha neu: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
-            debug.innerText = `Schritt 6`;
-        } else {
-            rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
         }
 
         const shiftPercentage = (alpha-180);
         stage.style.left = `${shiftPercentage}%`;
-        panNode.pan.value = (alpha-180)/180; // Bereich: -1 bis 1
+        if(isMusicPlaying) {
+            panNode.pan.value = (alpha-180)/180; // Bereich: -1 bis 1
+        }
 
         // Output the rotation values
-        //rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
+        rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
     }
 
     alphaSlider.addEventListener('input', handleAlphaSlider);
