@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const beta = event.beta;   // X-Rotation
         const gamma = event.gamma; // Y-Rotation
 
-        if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
+        if (gamma <= 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
             alpha += 180;
-            rotationOutput.innerText = `Alpha 1: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
+            rotationOutput.innerText = `Alpha neu: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
         } else {
             rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
         }
@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         panNode.pan.value = (alpha-180)/180; // Bereich: -1 bis 1
 
         // Output the rotation values
+        //rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
     }
 
     alphaSlider.addEventListener('input', handleAlphaSlider);
