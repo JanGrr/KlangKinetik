@@ -26,17 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('deviceorientation', handleOrientation);
     function handleOrientation(event) {
-        //const alpha = event.alpha || 0; // Z-Rotation
-        //const beta = event.beta || 0;   // X-Rotation
-        //const gamma = event.gamma || 0; // Y-Rotation
-
         const alpha = event.alpha; // Z-Rotation
         const beta = event.beta;   // X-Rotation
         const gamma = event.gamma; // Y-Rotation
         
         // Verwende den Alpha-Wert aus dem Slider oder den vom Gyroskop
         //const shiftPercentage = ((alphaSlider.value || alpha)-180)*4; // Umrechnung in Prozent
-        const shiftPercentage = (alpha-180)*4;
+        const shiftPercentage = (alpha-180);
         stage.style.left = `${shiftPercentage}%`;
 
         // Output the rotation values
