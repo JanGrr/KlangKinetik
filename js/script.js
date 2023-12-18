@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let isMusicPlaying = false;
     let audioContext, panNode, music;
     
-    playButton.addEventListener('click', function() {
+    playButton.addEventListener('click', toggleAudio);
+
+    function toggleAudio() {
         if (!isMusicInitialized) {
             initAudio();
             isMusicInitialized = true;
@@ -25,8 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 playButton.innerText = 'Pause';
             });
         }
-
-    });
+    };
 
     function initAudio() {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
