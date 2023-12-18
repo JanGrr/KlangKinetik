@@ -1,3 +1,7 @@
+function redirectToWiki() {
+    window.location.href = 'wiki.html';
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const stage = document.getElementById('stage');
     const playButton = document.getElementById('playButton');
@@ -9,9 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let isMusicInitialized = false;
     let isMusicPlaying = false;
     let audioContext, panNode, music;
-    
-    playButton.addEventListener('click', toggleAudio);
 
+    playButton.addEventListener('click', toggleAudio);
     function toggleAudio() {
         if (!isMusicInitialized) {
             initAudio();
