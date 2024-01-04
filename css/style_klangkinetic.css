@@ -15,22 +15,10 @@ body {
     margin-bottom: 20px;
 }
 
-#stage {
-    width: 200px; /* Breite der Bühne */
-    height: 100px; /* Höhe der Bühne */
-    background-color: #333; /* Ändere die Hintergrundfarbe der Bühne */
-    position: relative;
-    margin-top: 20px;
-    transform-origin: center center;
-    /* Entferne die Animation */
-}
-
-#stage:before {
-    content: "";
-    width: 100%;
+#container .stage {
+    flex: 1;
     height: 100%;
-    background-color: #eea8a8; /* Farbe des Bühnen-Elements */
-    display: block;
+    overflow: hidden; /* Verhindert, dass das Bild über den Rahmen hinausragt */
 }
 
 #rotation-output {
