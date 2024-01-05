@@ -96,10 +96,10 @@ var DeviceOrientationControls = function ( object ) {
 
 			var alpha = device.alpha ? _Math.degToRad( device.alpha ) + scope.alphaOffset : 0; // Z
 
-			var beta = 1.25 // 1.25 seems about right for the hight of the stage without allowing movement in X-Axis
+			var beta = 0 // 1.25 seems about right for the hight of the stage without allowing movement in X-Axis
 		  //var beta = device.beta ? _Math.degToRad( device.beta ) : 0; // X'
 
-			var gamma = 0 // no movement in Y-Axis
+			var gamma = 1.25 // no movement in Y-Axis
 		  //var gamma = device.gamma ? _Math.degToRad( device.gamma ) : 0; // Y''
 
 		    // ------------------------------------------------------------------------------------------------------------
