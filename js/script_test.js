@@ -1,34 +1,38 @@
-// Initialisiere Three.js und erstelle Szene, Kamera und Renderer
+// setup for 360° image of stage that turns by turning phone
+
+// adjust values for X- & Y-Axis in DeviceOrientationControls.js, so it just moves in Z-Axis
+
+// start with initialising Three.js creating a scene, camera and renderer
+import { DeviceOrientationControls } from '../three.js-r105/examples/jsm/controls/DeviceOrientationControls.js';
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-// Lade das 360° Bild
+// load the 360° image
 const texture = new THREE.TextureLoader().load('../images/panorama.jpeg');
 
-// Erstelle eine Kugelgeometrie für das 360° Bild
-const geometry = new THREE.SphereGeometry(500, 60, 40);
+// create Spheregeometry for the 360° image
+const geometry = new THREE.SphereGeometry(500, 60, 40);  // 500, 60, 40 can be adjusted, but seems fine for now
 const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
 const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
-// Setze die Kamera-Position
+// set camera-position
 camera.position.set(0, 0, 0);
 console.log("neuste Version 3");
 
-// Hinzufügen von Gyrosensor-Steuerung
-import { DeviceOrientationControls } from '../three.js-r105/examples/jsm/controls/DeviceOrientationControls.js';
+// add gyrosensor-movement
 const controls = new DeviceOrientationControls(camera);
 controls.connect();
 
-// Animations-Loop
+// animation-loop
 function animate() {
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
 }
 
-// Starte die Animation
+// start animation
 animate();

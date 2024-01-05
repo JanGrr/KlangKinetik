@@ -92,11 +92,17 @@ var DeviceOrientationControls = function ( object ) {
 
 		if ( device ) {
 
+			// ------------------------- some changes done here, to just allow movement in Z-Axis -------------------------
+
 			var alpha = device.alpha ? _Math.degToRad( device.alpha ) + scope.alphaOffset : 0; // Z
 
-			var beta = 0 //device.beta ? _Math.degToRad( device.beta ) : 0; // X'
+			var beta = 1.25 // 1.25 seems about right for the hight of the stage without allowing movement in X-Axis
+		  //var beta = device.beta ? _Math.degToRad( device.beta ) : 0; // X'
 
-			var gamma = device.gamma ? _Math.degToRad( device.gamma ) : 0; // Y''
+			var gamma = 0 // no movement in Y-Axis
+		  //var gamma = device.gamma ? _Math.degToRad( device.gamma ) : 0; // Y''
+
+		    // ------------------------------------------------------------------------------------------------------------
 
 			var orient = scope.screenOrientation ? _Math.degToRad( scope.screenOrientation ) : 0; // O
 
