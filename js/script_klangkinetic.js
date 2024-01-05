@@ -1,7 +1,3 @@
-function redirectToWiki() {
-    window.location.href = 'wiki.html';
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     const stage = document.getElementById('stage');
     const playButton = document.getElementById('playButton');

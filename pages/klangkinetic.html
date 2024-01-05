@@ -10,15 +10,19 @@
     <link rel="stylesheet" href="../css/style_klangkinetic.css">
 </head>
 <body>
-    <div id="container">
-        <button onclick="redirectToWiki()">Zurück</button>
-        <div id="header">KlangKinetik 0</div>
+    <div class="main-container">
+        <a href="test.html">test</a>
+        <a href="wiki.html">Zurück</a>
+        <div id="header">KlangKinetik 1</div>
+        <br>
         <div class="stage">
-            <img src="images/panorama.jpeg" alt="360 Image">
+            <!-- <img src="../images/panorama.jpeg" alt="360 Image"> -->
         </div>
+        <br>
         <div id="rotation-output"></div>
         <input type="range" id="alphaSlider" min="0" max="360" step="1" value="180">
         <input type="range" id="panSlider" min="0" max="100" step="1" value="50">
+        <br>
         <button id="playButton">Play</button>
         <div id="debug"></div>
     </div>
@@ -30,8 +34,8 @@
     crossorigin="anonymous" 
     referrerpolicy="no-referrer">
     </script>
-    <script src="js/panolens.min.js"></script>
-    <script src="js/script_index.js" defer></script>
+    <script src="../js/panolens.min.js"></script>
+    <script src="../js/script_index.js" defer></script>
 
 </body>
 </html>
