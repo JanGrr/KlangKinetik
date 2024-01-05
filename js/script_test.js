@@ -5,9 +5,9 @@
 // start with initialising Three.js creating a scene, camera and renderer
 import { DeviceOrientationControls } from '../three.js-r105/examples/jsm/controls/DeviceOrientationControls.js';
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(150, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
 // load the 360° image
@@ -21,7 +21,7 @@ scene.add(sphere);
 
 // set camera-position
 camera.position.set(0, 0, 0);
-console.log("neuste Version 3");
+console.log("neuste Version 4");
 
 // add gyrosensor-movement
 const controls = new DeviceOrientationControls(camera);
