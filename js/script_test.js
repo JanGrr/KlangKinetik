@@ -15,8 +15,8 @@ const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
 // Setze die Kamera-Position
-camera.position.set(0, 0, 0.1);
-console.log("neuste Version 1");
+camera.position.set(0, 0, 0);
+console.log("neuste Version 3");
 
 // Hinzufügen von Gyrosensor-Steuerung
 import { DeviceOrientationControls } from '../three.js-r105/examples/jsm/controls/DeviceOrientationControls.js';
