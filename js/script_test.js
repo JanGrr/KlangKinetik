@@ -11,7 +11,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
 // load the 360° image
-const texture = new THREE.TextureLoader().load('../images/panorama.jpeg');
+const texture = new THREE.TextureLoader().load('../images/stage.jpg');
 
 // create Spheregeometry for the 360° image
 const geometry = new THREE.SphereGeometry(500, 60, 40);  // 500, 60, 40 can be adjusted, but seems fine for now
