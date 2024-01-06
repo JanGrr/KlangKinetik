@@ -94,23 +94,21 @@ var DeviceOrientationControls = function ( object ) {
 
 			// ------------------------- some changes done here, to just allow movement in Z-Axis -------------------------
 
-			var beta = _Math.degToRad(0) // no movement in X-Axis and turn image 90°
-		  //var beta = device.beta ? _Math.degToRad( device.beta ) : 0; // X'
+			var alpha = device.alpha;
+			var beta = device.beta;
+			var gamma = device.gamma;
 
-			var gamma = _Math.degToRad(95) // 1.65 seems about right for the hight of the stage without allowing movement in Y-Axis
-		  //var gamma = device.gamma ? _Math.degToRad( device.gamma ) : 0; // Y''
-
-			var alphaCorrected = device.alpha;
-			/*if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
-				if (alphaCorrected < 180) {
-					alphaCorrected += 180;
+			if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
+				if (alpha < 180) {
+					alpha += 180;
 				} else {
-					alphaCorrected -= 180;
+					alpha -= 180;
 				}
-			}*/
+			}
 			
-			var alpha = _Math.degToRad( alphaCorrected ) + scope.alphaOffset; // Z
-			console.log("alpha: " + device.alpha + " , beta: " + device.beta + " , gamma:" + device.gamma);
+			alpha = _Math.degToRad(alpha); // Z
+			beta = _Math.degToRad(0) // no movement in X-Axis and turn image 90°
+			gamma = _Math.degToRad(95) // 1.65 seems about right for the hight of the stage without allowing movement in Y-Axis
 
 		    // ------------------------------------------------------------------------------------------------------------
 
