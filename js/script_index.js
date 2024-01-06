@@ -2,7 +2,7 @@ function redirectToWiki() {
     window.location.href = 'pages/wiki.html';
 }
 
-const panoramaImage = new PANOLENS.ImagePanorama("images/panorama.jpeg");
+const panoramaImage = new PANOLENS.ImagePanorama("images/stage.jpg");
 const imageContainer = document.querySelector(".image-container");
 
 const viewer = new PANOLENS.Viewer({
