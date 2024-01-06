@@ -29,7 +29,6 @@ var DeviceOrientationControls = function ( object ) {
 	var onDeviceOrientationChangeEvent = function ( event ) {
 
 		scope.deviceOrientation = event;
-		
 
 	};
 
@@ -95,15 +94,17 @@ var DeviceOrientationControls = function ( object ) {
 
 			// ------------------------- some changes done here, to just allow movement in Z-Axis -------------------------
 
-			var alpha = device.alpha ? _Math.degToRad( device.alpha ) + scope.alphaOffset : 0; // Z
-			
-			if (beta < 0 && beta > -90) { // to bypass 'gimbal lock' problem of Euler angles
+			console.log("alpha: " + device.alpha + " , beta: " + device.beta + " , gamma:" + device.gamma);
+			if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
 				if (alpha < 180) {
 					alpha += 180;
 				} else {
 					alpha -= 180;
 				}
 			}
+
+			var alpha = device.alpha ? _Math.degToRad( device.alpha ) + scope.alphaOffset : 0; // Z
+
 
 			var beta = 0 // no movement in X-Axis and turn image 90°
 		  //var beta = device.beta ? _Math.degToRad( device.beta ) : 0; // X'
