@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isMusicPlaying) {
             music.pause();
             isMusicPlaying = false;
-            playButton.innerText = 'Play';
+            playButton.innerText = 'Play Music';
         } else {
             audioContext.resume().then(() => {
                 music.play();
                 isMusicPlaying = true;
-                playButton.innerText = 'Pause';
+                playButton.innerText = 'Stop Music';
             });
         }
     };
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const beta = event.beta;   // X-Rotation
         const gamma = event.gamma; // Y-Rotation
 
+        // ------------------- check if < 0 or <= 0 and >= -90 or > -90 -------------------
         if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
             if (alpha < 180) {
                 alpha += 180;

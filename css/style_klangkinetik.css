@@ -1,12 +1,16 @@
+body {
+    background: linear-gradient(45deg,#0006ff,#a801ff);
+    margin: 0;
+    /* because body doesnt extend the full height of the screen*/
+    min-height: 98.4vh;
+}
 
 #image-container {
-    margin-left: 4.5%;
-    margin-right: 4.5%;
-    background-color: white;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 #stage-container {
-    background-color: white;
     text-align: center;
 }
 
@@ -15,13 +19,11 @@
     text-align: right;
     color: black;
     font-size: 14px;
+    color: white;
 }
 
 #playButton-container {
     text-align: center;
-}
-#info {
-    right: 10%;
 }
 
 #playButton {
@@ -37,3 +39,68 @@
     border-radius: 8px; /* Abrundung der Ecken */
 }
 
+.sound-waves {
+    margin: 1%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sound-waves .stroke {
+    display: block;
+    position: relative;
+    background: darkgray;
+    height: 100%;
+    width: 10px;
+    border-radius: 50px;
+    margin: 0 5px;
+    animation: animate 1.2s linear infinite;
+}
+@keyframes animate{
+    50%{
+        height: 20%;
+    }
+    100%{
+        height: 100%;
+    }
+}
+.stroke:nth-child(1){
+    animation-delay: 0s;
+}
+.stroke:nth-child(2){
+    animation-delay: 0.3s;
+}
+.stroke:nth-child(3){
+    animation-delay: 0.6s;
+}
+.stroke:nth-child(4){
+    animation-delay: 0.9s;
+}
+.stroke:nth-child(5){
+    animation-delay: 0.6s;
+}
+.stroke:nth-child(6){
+    animation-delay: 0.3s;
+}
+.stroke:nth-child(7){
+    animation-delay: 0s;
+}
+.stroke:nth-child(8){
+    animation-delay: 0.3s;
+}
+.stroke:nth-child(9){
+    animation-delay: 0.6s;
+}
+.stroke:nth-child(10){
+    animation-delay: 0.9s;
+}
+.stroke:nth-child(11){
+    animation-delay: 0.6s;
+}
+.stroke:nth-child(12){
+    animation-delay: 0.3s;
+}
+.stroke:nth-child(13){
+    animation-delay: 0s;
+}
