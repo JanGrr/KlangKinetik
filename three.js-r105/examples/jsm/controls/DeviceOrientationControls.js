@@ -98,6 +98,8 @@ var DeviceOrientationControls = function ( object ) {
 			var beta = device.beta;
 			var gamma = device.gamma;
 
+			alpha += 180;
+
 			if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
 				if (alpha < 180) {
 					alpha += 180;
