@@ -29,6 +29,7 @@ var DeviceOrientationControls = function ( object ) {
 	var onDeviceOrientationChangeEvent = function ( event ) {
 
 		scope.deviceOrientation = event;
+		
 
 	};
 
