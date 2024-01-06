@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const playButton = document.getElementById('playButton');
+    const debug = document.getElementById('debug');
 
     let isMusicInitialized = false;
     let isMusicPlaying = false;
@@ -52,8 +53,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (panvalue >= -0.5 && panvalue <= 0.5) {
                 panvalue * 2;
             } else {
-                panvalue = -(panvalue - 1)
+                if (panvalue >= 0) {
+                    panvalue = (-panvalue + 1) * 2
+                } else {
+                    panvalue = (-panvalue - 1) * 2
+                }
             }
+            debug.innerText = panvalue;
             panNode.pan.value = panvalue;
         }
     }
