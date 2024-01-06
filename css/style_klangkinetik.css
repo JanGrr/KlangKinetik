@@ -1,0 +1,39 @@
+
+#image-container {
+    margin-left: 4.5%;
+    margin-right: 4.5%;
+    background-color: white;
+}
+
+#stage-container {
+    background-color: white;
+    text-align: center;
+}
+
+#image-info {
+    margin: 0;
+    text-align: right;
+    color: black;
+    font-size: 14px;
+}
+
+#playButton-container {
+    text-align: center;
+}
+#info {
+    right: 10%;
+}
+
+#playButton {
+    background-color: #24a0ed; /* Hintergrundfarbe */
+    border: none; /* Kein Rand */
+    color: white; /* Textfarbe */
+    padding: 15px 32px; /* Innenabstand (oben/unten links/rechts) */
+    text-decoration: none; /* Keine Textunterstreichung */
+    display: inline-block;
+    font-size: 16px; /* Schriftgröße */
+    margin: 4px 2px; /* Außenabstand (oben/unten links/rechts) */
+    cursor: pointer; /* Zeiger-Cursor beim Überfahren */
+    border-radius: 8px; /* Abrundung der Ecken */
+}
+

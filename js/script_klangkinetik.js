@@ -7,8 +7,8 @@ import { DeviceOrientationControls } from '../three.js-r105/examples/jsm/control
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
-document.getElementById('canvas-container').appendChild(renderer.domElement);
+renderer.setSize(window.innerWidth * 0.9, window.innerHeight * 0.7);
+document.getElementById('stage-container').appendChild(renderer.domElement);
 
 // load the 360° image
 const texture = new THREE.TextureLoader().load('../images/stage.jpg');

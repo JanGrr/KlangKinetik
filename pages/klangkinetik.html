@@ -7,16 +7,22 @@
     <meta name="description" content="Eine Seite über Mobile Computing und IoT.">
     <meta name="keywords" content="HTML, CSS, Javascript">
     <title>KlangKinetik</title>
-    <link rel="stylesheet" href="../css/style_test.css">
+    <link rel="stylesheet" href="../css/style_klangkinetik.css">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Einbindung des Headers -->
     <header-container></header-container>
+    <!-- <div id="debug"></div> -->
+    <div id="image-container">
+        <div id="stage-container"></div>
+        <p id="image-info">Image created by Blockade Labs AI </p>
+    </div>
+    <br>
+    <div id="playButton-container">
+        <button id="playButton">Play Music</button>
+    </div>
 
-    <button id="playButton">Play</button>
-    <div id="debug"></div>
-    <div id="canvas-container"></div>
 
     <script type_module src="../js/header.js"></script>
     <script src="../three.js-r105/build/three.min.js"></script>
