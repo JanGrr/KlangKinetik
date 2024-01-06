@@ -96,14 +96,14 @@ var DeviceOrientationControls = function ( object ) {
 
 			var alpha = device.alpha ? _Math.degToRad( device.alpha ) + scope.alphaOffset : 0; // Z
 			
-			if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
+			if (beta < 0 && beta > -90) { // to bypass 'gimbal lock' problem of Euler angles
 				if (alpha < 180) {
 					alpha += 180;
 				} else {
 					alpha -= 180;
 				}
 			}
-			
+
 			var beta = 0 // no movement in X-Axis and turn image 90°
 		  //var beta = device.beta ? _Math.degToRad( device.beta ) : 0; // X'
 
