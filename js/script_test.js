@@ -36,3 +36,8 @@ function animate() {
 
 // start animation
 animate();
+
+// to reload and adjust the page when switching from portrait to landscape format or vice versa
+window.addEventListener("orientationchange", function() {
+    location.reload();
+});
