@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     const playButton = document.getElementById('playButton');
-    const alphaSlider = document.getElementById('alphaSlider');
-    const panSlider = document.getElementById('panSlider');
 
     let isMusicInitialized = false;
     let isMusicPlaying = false;
@@ -37,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('deviceorientation', handleOrientation);
     function handleOrientation(event) {
-        debug.innerText = `Aufruf handleOrientation 1`;
         let alpha = event.alpha; // Z-Rotation 
         const beta = event.beta;   // X-Rotation
         const gamma = event.gamma; // Y-Rotation
@@ -50,27 +47,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        const shiftPercentage = (alpha-180);
-        stage.style.left = `${shiftPercentage}%`;
         if(isMusicPlaying) {
-            panNode.pan.value = (alpha-180)/180; // Bereich: -1 bis 1
+            panvalue = (alpha-180)/180 // Bereich: -1 bis 1
+            if (panvalue >= -0.5 && panvalue <= 0.5) {
+                panvalue * 2;
+            } else {
+                panvalue = -(panvalue - 1)
+            }
+            panNode.pan.value = panvalue;
         }
-
-        // Output the rotation values
-        rotationOutput.innerText = `Alpha: ${alpha.toFixed(2)}°, Beta: ${beta.toFixed(2)}°, Gamma: ${gamma.toFixed(2)}°`;
-    }
-
-    alphaSlider.addEventListener('input', handleAlphaSlider);
-    function handleAlphaSlider() {
-        // Aktualisiere die Position basierend auf dem Slider-Wert
-        const shiftPercentage = (alphaSlider.value-180)*4; // Umrechnung in Prozent
-        stage.style.left = `${shiftPercentage}%`;
-    }
-
-    panSlider.addEventListener('input', handlePanSlider);
-    function handlePanSlider() {
-        // Aktualisiere die Pan-Position basierend auf dem Slider-Wert
-        const panValue = (panSlider.value - 50) / 50; // Bereich: -1 bis 1
-        panNode.pan.value = panValue;
     }
 });

@@ -9,3 +9,4 @@ dann im entsprechenden Ordner die Befehle:
   http-server
 
 
+created stage.jpg with blocklabs -> really nice ai-tool

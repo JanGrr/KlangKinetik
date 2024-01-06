@@ -98,6 +98,7 @@ var DeviceOrientationControls = function ( object ) {
 			var beta = device.beta;
 			var gamma = device.gamma;
 
+			// image is being loaded exactly in opposite direction of the stage -> +180° to fix it
 			alpha += 180;
 
 			if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
