@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if(isMusicPlaying) {
             panvalue = (alpha-180)/180 // Bereich: -1 bis 1
             if (panvalue >= -0.5 && panvalue <= 0.5) {
-                panvalue * 2;
+                panvalue *= 2;
             } else {
                 if (panvalue >= 0) {
                     panvalue = (-panvalue + 1) * 2
