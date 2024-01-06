@@ -101,13 +101,13 @@ var DeviceOrientationControls = function ( object ) {
 		  //var gamma = device.gamma ? _Math.degToRad( device.gamma ) : 0; // Y''
 
 			var alphaCorrected = device.alpha;
-			if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
+			/*if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
 				if (alphaCorrected < 180) {
 					alphaCorrected += 180;
 				} else {
 					alphaCorrected -= 180;
 				}
-			}
+			}*/
 			
 			var alpha = _Math.degToRad( alphaCorrected ) + scope.alphaOffset; // Z
 			console.log("alpha: " + device.alpha + " , beta: " + device.beta + " , gamma:" + device.gamma);
