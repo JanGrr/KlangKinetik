@@ -111,7 +111,7 @@ var DeviceOrientationControls = function ( object ) {
 			
 			alpha = _Math.degToRad(alpha); // Z
 			beta = _Math.degToRad(0) // no movement in X-Axis and turn image 90°
-			gamma = _Math.degToRad(95) // 1.65 seems about right for the hight of the stage without allowing movement in Y-Axis
+			gamma = _Math.degToRad(95) // 95 seems about right for the hight of the stage without allowing movement in Y-Axis
 
 		    // ------------------------------------------------------------------------------------------------------------
 

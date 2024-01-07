@@ -1,12 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     const playButton = document.getElementById('playButton');
-    const debug = document.getElementById('debug');
+    //const debug = document.getElementById('debug');
+    const soundWaves = document.querySelectorAll('.sound-waves .wave');
 
     let isMusicInitialized = false;
     let isMusicPlaying = false;
     let audioContext, panNode, music;
 
+    stopSoundwaves();
+    
     playButton.addEventListener('click', toggleAudio);
+
     function toggleAudio() {
         if (!isMusicInitialized) {
             initAudio();
@@ -14,11 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (isMusicPlaying) {
             music.pause();
+            stopSoundwaves();
             isMusicPlaying = false;
             playButton.innerText = 'Play Music';
         } else {
             audioContext.resume().then(() => {
                 music.play();
+                startSoundwaves();
                 isMusicPlaying = true;
                 playButton.innerText = 'Stop Music';
             });
@@ -34,7 +40,22 @@ document.addEventListener('DOMContentLoaded', function() {
         panNode.connect(audioContext.destination);
     }
 
+    function startSoundwaves() {
+        soundWaves.forEach(wave => {
+            wave.style.animationPlayState = 'running';
+            wave.style.height = '100%';
+        });
+    }
+
+    function stopSoundwaves() {
+        soundWaves.forEach(wave => {
+            wave.style.animationPlayState = 'paused';
+            wave.style.height = '10%';
+        });
+    }
+
     window.addEventListener('deviceorientation', handleOrientation);
+
     function handleOrientation(event) {
         let alpha = event.alpha; // Z-Rotation 
         const beta = event.beta;   // X-Rotation
@@ -60,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     panvalue = (-panvalue - 1) * -2
                 }
             }
-            debug.innerText = panvalue;
+            //debug.innerText = panvalue;
             panNode.pan.value = panvalue;
         }
     }

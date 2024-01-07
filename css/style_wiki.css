@@ -1,0 +1,51 @@
+body {
+    background: linear-gradient(45deg,#0006ff,#a801ff);
+    margin: 0;
+    /* because body doesnt extend the full height of the screen*/
+    min-height: 98.4vh;
+    color: white;
+}
+
+#main-container {
+    margin-left: 35%;
+    margin-right: 35%;
+    /*text-align: center; */
+}
+
+#main-container h1{
+    text-align: center;
+}
+
+#main-container h3{
+    font-weight: 100;
+}
+
+#main-container p{
+    margin-left: 5%;
+}
+
+#main-container img{
+    margin-left: 5%;
+}
+
+#startButton-container {
+    margin-top: 2%;
+    text-align: center;
+}
+
+#startButton {
+    background-color: #24a0ed; /* Hintergrundfarbe */
+    border: none; /* Kein Rand */
+    color: white; /* Textfarbe */
+    padding: 15px 32px; /* Innenabstand (oben/unten links/rechts) */
+    text-decoration: none; /* Keine Textunterstreichung */
+    display: inline-block;
+    font-size: 16px; /* Schriftgröße */
+    margin: 4px 2px; /* Außenabstand (oben/unten links/rechts) */
+    cursor: pointer; /* Zeiger-Cursor beim Überfahren */
+    border-radius: 8px; /* Abrundung der Ecken */
+}
+
+#startButtonText {
+    font-size: 25px;
+}
