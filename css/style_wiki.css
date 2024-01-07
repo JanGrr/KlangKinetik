@@ -7,25 +7,13 @@ body {
 }
 
 #main-container {
-    margin-left: 35%;
-    margin-right: 35%;
-    /*text-align: center; */
-}
-
-#main-container h1{
+    margin-left: 5%;
+    margin-right: 5%;
     text-align: center;
 }
 
 #main-container h3{
     font-weight: 100;
-}
-
-#main-container p{
-    margin-left: 5%;
-}
-
-#main-container img{
-    margin-left: 5%;
 }
 
 #startButton-container {
