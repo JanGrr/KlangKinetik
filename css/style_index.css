@@ -38,9 +38,10 @@ body {
     color: #fff;
     font-family: "Raleway", sans-serif;
     text-transform: uppercase;
-    font-size: 40px;
+    font-size: 4vh;
     font-weight: 300;
     letter-spacing: 10px;
+    
 }
 
 
@@ -67,7 +68,7 @@ body {
     background-color: #0f7abd;
 }
 
-/* put the 2 sides under each other instead of next to each other, when screen gets too thin*/
+/* put the 2 sides under each other instead of next to each other, when screen gets too */
 @media screen and (max-width: 1000px) {
     .main-container {
         flex-direction: column; /* Elemente werden übereinander angeordnet */
@@ -80,6 +81,6 @@ body {
     }
 
     .button-container {
-    bottom: 48%;
+    top: 48%;
     }
 }
