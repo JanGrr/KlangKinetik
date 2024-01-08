@@ -67,10 +67,10 @@ body {
     background-color: #0f7abd;
 }
 
-/* put the 2 sides under each other instead of next to each other, when screen gets too */
+/* put the 2 sides over each other instead of next to each other, when screen gets too thin*/
 @media screen and (max-width: 1000px) and (orientation: portrait) {
     .main-container {
-        flex-direction: column; /* Elemente werden übereinander angeordnet */
+        flex-direction: column;
     }
 
     .main-container .text-container,
@@ -80,6 +80,13 @@ body {
     }
 
     .button-container {
-    top: 50%;
+    bottom: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: none;
     }
 }
