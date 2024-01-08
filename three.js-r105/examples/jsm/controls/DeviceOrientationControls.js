@@ -93,7 +93,7 @@ var DeviceOrientationControls = function ( object ) {
 		if ( device ) {
 
 			// ------------------------- some changes done here, to just allow movement in Z-Axis -------------------------
-			print("window.screen.orientation");
+			console.log("window.screen.orientation");
 			switch (window.screen.orientation) {
 				case 0:
 				case 90:
