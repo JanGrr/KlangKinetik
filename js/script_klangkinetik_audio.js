@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
     prevSong.addEventListener('click', prevTrack);
 
     function toggleAudio() {
-        console.log("jetzt");
         if (!isMusicInitialized) {
             initAudio();
             isMusicInitialized = true;
@@ -135,7 +134,9 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('deviceorientation', handleOrientation);
 
     function handleOrientation(event) {
+        console.log("1");
         if(isMusicPlaying) {
+            console.log("2");
             let alpha = event.alpha; // Z-Rotation 
             const beta = event.beta;   // X-Rotation
             const gamma = event.gamma; // Y-Rotation
@@ -159,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             panNode.pan.value = panvalue;
+            console.log(pannode);
         }
     }
 });
