@@ -69,7 +69,7 @@ body {
 }
 
 /* put the 2 sides under each other instead of next to each other, when screen gets too */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1000px) and (orientation: portrait) {
     .main-container {
         flex-direction: column; /* Elemente werden übereinander angeordnet */
     }
