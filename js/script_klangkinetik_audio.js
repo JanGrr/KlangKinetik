@@ -2,7 +2,6 @@ import musicList from './music_list.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     const playButton = document.getElementById('playButton');
-    //const debug = document.getElementById('debug');
     const soundWaves = document.querySelectorAll('.sound-waves .wave');
 
     // to initialize audio on first press on play
@@ -15,9 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let audioContext, panNode, music;
 
     let progress = document.getElementById("progress-slider");
-    let playpause = document.getElementById("playpause");
-    let nextSong = document.getElementById("next-song");
-    let prevSong = document.getElementById("prev-song");
+    let playpause = document.getElementById("playpause-container");
+    let playpauseIcon = document.getElementById("playpause");
+    let nextSong = document.getElementById("next-song-container");
+    let prevSong = document.getElementById("prev-song-container");
     let curr_song_time = document.getElementById("current-song-time");
     let total_song_duration = document.getElementById("total-song-duration");
     let song_index = 0;
@@ -35,17 +35,19 @@ document.addEventListener('DOMContentLoaded', function() {
             initAudio();
             isMusicInitialized = true;
         }
-        if (playpause.classList.contains("fa-pause")) {
+        if (playpauseIcon.classList.contains("fa-pause")) {
+            isMusicPlaying = false;
             music.pause();
             stopSoundwaves();
-            playpause.classList.remove("fa-pause");
-            playpause.classList.add("fa-play");
+            playpauseIcon.classList.remove("fa-pause");
+            playpauseIcon.classList.add("fa-play");
         } else {
             audioContext.resume().then(() => {
                 music.play();
+                isMusicPlaying = true;
                 startSoundwaves();
-                playpause.classList.remove("fa-play");
-                playpause.classList.add("fa-pause");
+                playpauseIcon.classList.remove("fa-play");
+                playpauseIcon.classList.add("fa-pause");
             });
         }
     }
@@ -53,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
     progress.onchange = function(){
         music.play();
         music.currentTime = progress.value;
-        playpause.classList.remove("fa-play");
-        playpause.classList.add("fa-pause");
+        playpauseIcon.classList.remove("fa-play");
+        playpauseIcon.classList.add("fa-pause");
     }
 
     function initAudio() {
@@ -98,6 +100,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         music.pause();
         initAudio();
+        playpauseIcon.classList.remove("fa-play");
+        playpauseIcon.classList.add("fa-pause")
         music.play();
     }
 
@@ -109,6 +113,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         music.pause();
         initAudio();
+        playpauseIcon.classList.remove("fa-play");
+        playpauseIcon.classList.add("fa-pause")
         music.play();
     }
 
@@ -129,20 +135,19 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('deviceorientation', handleOrientation);
 
     function handleOrientation(event) {
-        let alpha = event.alpha; // Z-Rotation 
-        const beta = event.beta;   // X-Rotation
-        const gamma = event.gamma; // Y-Rotation
-
-        // ------------------- check if < 0 or <= 0 and >= -90 or > -90 -------------------
-        if (gamma < 0 && gamma >= -90) { // to bypass 'gimbal lock' problem of Euler angles
-            if (alpha < 180) {
-                alpha += 180;
-            } else {
-                alpha -= 180;
-            }
-        }
-
         if(isMusicPlaying) {
+            let alpha = event.alpha; // Z-Rotation 
+            const beta = event.beta;   // X-Rotation
+            const gamma = event.gamma; // Y-Rotation
+    
+            if (gamma < 0 && gamma >= -90) { // to bypass 'gimbal lock' problem of Euler angles
+                if (alpha < 180) {
+                    alpha += 180;
+                } else {
+                    alpha -= 180;
+                }
+            }
+
             panvalue = (alpha-180)/180 // Bereich: -1 bis 1
             if (panvalue >= -0.5 && panvalue <= 0.5) {
                 panvalue *= -2;
@@ -153,8 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     panvalue = (-panvalue - 1) * -2
                 }
             }
-            //debug.innerText = panvalue;
-            console.log(panvalue);
             panNode.pan.value = panvalue;
         }
     }
