@@ -92,12 +92,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function nextTrack(){
+        if (isMusicPlaying) {music.pause();}
         if(song_index < (musicList.length - 1)){
             song_index += 1;
         } else {
             song_index = 0;
         }
-        music.pause();
         initAudio();
         playpauseIcon.classList.remove("fa-play");
         playpauseIcon.classList.add("fa-pause")
@@ -105,12 +105,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function prevTrack(){
+        if (isMusicPlaying) {music.pause();}
         if(song_index > 0){
             song_index -= 1;
         } else {
             song_index = musicList.length - 1;
         }
-        music.pause();
         initAudio();
         playpauseIcon.classList.remove("fa-play");
         playpauseIcon.classList.add("fa-pause")
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            panvalue = (alpha-180)/180 // Bereich: -1 bis 1
+            let panvalue = (alpha-180)/180 // Bereich: -1 bis 1
             if (panvalue >= -0.5 && panvalue <= 0.5) {
                 panvalue *= -2;
             } else {
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             panNode.pan.value = panvalue;
-            console.log(pannode);
+            console.log(panvalue);
         }
     }
 });
