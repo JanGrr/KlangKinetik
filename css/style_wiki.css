@@ -21,7 +21,7 @@ body {
     text-align: center;
 }
 
-#startButton {
+#startButton.landscape {
     background-color: #24a0ed; /* Hintergrundfarbe */
     border: none; /* Kein Rand */
     color: white; /* Textfarbe */
@@ -32,6 +32,10 @@ body {
     margin: 4px 2px; /* Außenabstand (oben/unten links/rechts) */
     cursor: pointer; /* Zeiger-Cursor beim Überfahren */
     border-radius: 8px; /* Abrundung der Ecken */
+}
+
+#startButton:hover {
+    background-color: #0f7abd;
 }
 
 #startButtonText {

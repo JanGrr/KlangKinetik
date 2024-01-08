@@ -3,8 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
     //const debug = document.getElementById('debug');
     const soundWaves = document.querySelectorAll('.sound-waves .wave');
 
+    // to initialize audio on first press on play
     let isMusicInitialized = false;
+
+    // tells if music is playing
     let isMusicPlaying = false;
+
+    // to create the 360 sound
     let audioContext, panNode, music;
 
     stopSoundwaves();
