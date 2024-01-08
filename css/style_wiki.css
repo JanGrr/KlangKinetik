@@ -21,7 +21,7 @@ body {
     text-align: center;
 }
 
-#startButton.landscape {
+#startButton {
     background-color: #24a0ed; /* Hintergrundfarbe */
     border: none; /* Kein Rand */
     color: white; /* Textfarbe */
