@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const gamma = event.gamma; // Y-Rotation
 
         // ------------------- check if < 0 or <= 0 and >= -90 or > -90 -------------------
-        if (gamma < 0 && gamma > -90) { // to bypass 'gimbal lock' problem of Euler angles
+        if (gamma < 0 && gamma >= -90) { // to bypass 'gimbal lock' problem of Euler angles
             if (alpha < 180) {
                 alpha += 180;
             } else {
