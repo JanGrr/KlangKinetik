@@ -52,8 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     progress.onchange = function(){
-        music.play();
+        if (!isMusicInitialized) {
+            initAudio();
+            isMusicInitialized = true;
+        }
         music.currentTime = progress.value;
+        music.play();
+        startSoundwaves();
+        isMusicPlaying = true;
         playpauseIcon.classList.remove("fa-play");
         playpauseIcon.classList.add("fa-pause");
     }
@@ -92,29 +98,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function nextTrack(){
-        if (isMusicPlaying) {music.pause();}
-        if(song_index < (musicList.length - 1)){
-            song_index += 1;
-        } else {
-            song_index = 0;
+        if (isMusicInitialized) {
+            if (isMusicPlaying) {music.pause();}
+            if(song_index < (musicList.length - 1)){
+                song_index += 1;
+            } else {
+                song_index = 0;
+            }
+            initAudio();
+            playpauseIcon.classList.remove("fa-play");
+            playpauseIcon.classList.add("fa-pause")
+            music.play();
         }
-        initAudio();
-        playpauseIcon.classList.remove("fa-play");
-        playpauseIcon.classList.add("fa-pause")
-        music.play();
     }
 
     function prevTrack(){
-        if (isMusicPlaying) {music.pause();}
-        if(song_index > 0){
-            song_index -= 1;
-        } else {
-            song_index = musicList.length - 1;
+        if (isMusicInitialized) {
+            if (isMusicPlaying) {music.pause();}
+            if(song_index > 0){
+                song_index -= 1;
+            } else {
+                song_index = musicList.length - 1;
+            }
+            initAudio();
+            playpauseIcon.classList.remove("fa-play");
+            playpauseIcon.classList.add("fa-pause")
+            music.play();
         }
-        initAudio();
-        playpauseIcon.classList.remove("fa-play");
-        playpauseIcon.classList.add("fa-pause")
-        music.play();
     }
 
     function startSoundwaves() {
