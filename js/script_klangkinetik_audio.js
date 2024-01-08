@@ -1,3 +1,5 @@
+import musicList from './music_list.js';
+
 document.addEventListener('DOMContentLoaded', function() {
     const playButton = document.getElementById('playButton');
     //const debug = document.getElementById('debug');
@@ -12,37 +14,102 @@ document.addEventListener('DOMContentLoaded', function() {
     // to create the 360 sound
     let audioContext, panNode, music;
 
+    let progress = document.getElementById("progress-slider");
+    let playpause = document.getElementById("playpause");
+    let nextSong = document.getElementById("next-song");
+    let prevSong = document.getElementById("prev-song");
+    let curr_song_time = document.getElementById("current-song-time");
+    let total_song_duration = document.getElementById("total-song-duration");
+    let song_index = 0;
+
+    //load website without soundwaves
     stopSoundwaves();
-    
-    playButton.addEventListener('click', toggleAudio);
+
+    playpause.addEventListener('click', toggleAudio);
+    nextSong.addEventListener('click', nextTrack);
+    prevSong.addEventListener('click', prevTrack);
 
     function toggleAudio() {
+        console.log("jetzt");
         if (!isMusicInitialized) {
             initAudio();
             isMusicInitialized = true;
         }
-        if (isMusicPlaying) {
+        if (playpause.classList.contains("fa-pause")) {
             music.pause();
             stopSoundwaves();
-            isMusicPlaying = false;
-            playButton.innerText = 'Play Music';
+            playpause.classList.remove("fa-pause");
+            playpause.classList.add("fa-play");
         } else {
             audioContext.resume().then(() => {
                 music.play();
                 startSoundwaves();
-                isMusicPlaying = true;
-                playButton.innerText = 'Stop Music';
+                playpause.classList.remove("fa-play");
+                playpause.classList.add("fa-pause");
             });
         }
-    };
+    }
+
+    progress.onchange = function(){
+        music.play();
+        music.currentTime = progress.value;
+        playpause.classList.remove("fa-play");
+        playpause.classList.add("fa-pause");
+    }
 
     function initAudio() {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
         panNode = audioContext.createStereoPanner();
-        music = new Audio('../Audio/Song.mp3');
+        music = new Audio(musicList[song_index].src);
         const source = audioContext.createMediaElementSource(music);
         source.connect(panNode);
         panNode.connect(audioContext.destination);
+
+        music.addEventListener('loadedmetadata', function() {
+            // initialize progress Bar
+            progress.max = music.duration;
+            progress.value = music.currentTime;
+    
+            let durationMinutes = Math.floor(music.duration / 60);
+            let durationSeconds = Math.floor(music.duration % 60);
+            if (durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
+            if (durationMinutes < 10) { durationMinutes = "0" + durationMinutes; }
+            
+            total_song_duration.textContent = durationMinutes + ":" + durationSeconds;
+        });
+    
+        music.addEventListener('ended', nextTrack);
+
+        setInterval(()=>{
+            progress.value = music.currentTime;
+            let currentMinutes = Math.floor(music.currentTime / 60);
+            let currentSeconds = Math.floor(music.currentTime % 60);
+            if(currentSeconds < 10) {currentSeconds = "0" + currentSeconds;}
+            if(currentMinutes < 10) {currentMinutes = "0" + currentMinutes;}
+            curr_song_time.textContent = currentMinutes + ":" + currentSeconds;
+        },500);
+    }
+
+    function nextTrack(){
+        if(song_index < (musicList.length - 1)){
+            song_index += 1;
+        } else {
+            song_index = 0;
+        }
+        music.pause();
+        initAudio();
+        music.play();
+    }
+
+    function prevTrack(){
+        if(song_index > 0){
+            song_index -= 1;
+        } else {
+            song_index = musicList.length - 1;
+        }
+        music.pause();
+        initAudio();
+        music.play();
     }
 
     function startSoundwaves() {

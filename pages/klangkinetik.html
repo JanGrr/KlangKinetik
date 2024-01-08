@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/style_klangkinetik.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/e542788275.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Einbindung des Headers -->
@@ -19,8 +20,18 @@
         <div id="stage-container"></div>
         <p id="image-info">Image created by Blockade Labs AI </p>
     </div>
-    <div id="playButton-container">
-        <button id="playButton">Play Music</button>
+    <div id="audio-controls">
+        <div id="progress-slider-container">
+            <div id="current-song-time">00:00</div>
+            <input type="range" value="0" id="progress-slider">
+            <div id="total-song-duration">00:00</div>
+        </div>
+        <div class="controls">
+            <div><i class="fa-solid fa-backward" id="prev-song"></i></div>
+            <div><i class="fa-solid fa-play" id="playpause"></i></div>
+            <div><i class="fa-solid fa-forward" id="next-song"></i></div>
+        </div>
+        <!-- <button id="playButton">Play Music</button> -->
     </div>
     <div class="sound-waves">
         <span class="wave"></span>
@@ -41,6 +52,6 @@
     <script type_module src="../js/header.js"></script>
     <script src="../three.js-r105/build/three.min.js"></script>
     <script type="module" src="../js/script_klangkinetik.js" defer></script>
-    <script src="../js/script_klangkinetik_audio.js"></script>
+    <script type="module" src="../js/script_klangkinetik_audio.js"></script>
 </body>
 </html>

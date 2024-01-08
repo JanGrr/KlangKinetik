@@ -1,4 +1,5 @@
 // setup for 360° image of stage that turns by turning phone
+// first idea was to use a 360 video instead of an static image, but sadly I couldnt find a single good 360° festival video
 
 // adjust values for X- & Y-Axis in DeviceOrientationControls.js, so it just moves in Z-Axis
 
