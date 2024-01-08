@@ -134,11 +134,9 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('deviceorientation', handleOrientation);
 
     function handleOrientation(event) {
-        console.log("1");
         if(isMusicPlaying) {
-            console.log("2");
             let alpha = event.alpha; // Z-Rotation 
-            const beta = event.beta;   // X-Rotation
+            //const beta = event.beta;   // X-Rotation not used
             const gamma = event.gamma; // Y-Rotation
     
             if (gamma < 0 && gamma >= -90) { // to bypass 'gimbal lock' problem of Euler angles
@@ -160,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             panNode.pan.value = panvalue;
-            console.log(panvalue);
         }
     }
 });

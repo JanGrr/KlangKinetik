@@ -5,11 +5,6 @@ const music_list = [
         src : '../Audio/MaxRiven-Freeloader.mp3',
     },
     {
-        songname : 'Song',
-        artist : 'Song',
-        src : '../Audio/Song.mp3',
-    },
-    {
         songname : 'Kernkraft 400',
         artist : 'MaxRiven',
         src : '../Audio/MaxRiven-Kernkraft_400.mp3',
