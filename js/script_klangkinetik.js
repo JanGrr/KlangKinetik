@@ -22,7 +22,6 @@ scene.add(sphere);
 
 // set camera-position
 camera.position.set(0, 0, 0);
-console.log("neuste Version 4");
 
 // add gyrosensor-movement
 // Did some Changed in three.js-r105/examples/jsm/controls/DeviceOrientationControls.js

@@ -154,6 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             //debug.innerText = panvalue;
+            console.log(panvalue);
             panNode.pan.value = panvalue;
         }
     }

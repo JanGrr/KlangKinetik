@@ -64,8 +64,8 @@ body {
 }
 
 .controls div{
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     margin: 20px;
     background: #fff;
     display: inline-flex;
@@ -78,7 +78,7 @@ body {
 }
 
 .controls div:nth-child(2){
-    transform: scale(1.5);
+    transform: scale(1.3);
     background: #f53192;
     color: #fff;
 }
