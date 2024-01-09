@@ -1,15 +1,23 @@
 body {
-    background: linear-gradient(45deg,#0006ff,#a801ff);
+    /* background: linear-gradient(45deg,#0006ff,#a801ff); */
+    background-color: #24252A;
     margin: 0;
-    /* because body doesnt extend the full height of the screen*/
+    /* because body doesnt extend the full height of the screen */
     min-height: 98.4vh;
-    color: white;
+    color:#edf0f1;
+    font-family: "Montserrat", sans-serif;
 }
 
 #main-container {
-    margin-left: 5%;
-    margin-right: 5%;
+    width: max-content;
+    border: 1px solid transparent;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     text-align: center;
+    display: table;
+    margin: 0 auto;
+    margin-bottom: 50px;
 }
 
 #main-container h3{
@@ -22,20 +30,30 @@ body {
 }
 
 #startButton {
-    background-color: #24a0ed; /* Hintergrundfarbe */
+    background-color: rgba(0, 136, 169, 1);; /* Hintergrundfarbe */
     border: none; /* Kein Rand */
     color: white; /* Textfarbe */
     padding: 15px 32px; /* Innenabstand (oben/unten links/rechts) */
     text-decoration: none; /* Keine Textunterstreichung */
     display: inline-block;
-    font-size: 16px; /* Schriftgröße */
+    font-size: 30px; /* Schriftgröße */
     margin: 4px 2px; /* Außenabstand (oben/unten links/rechts) */
     cursor: pointer; /* Zeiger-Cursor beim Überfahren */
     border-radius: 8px; /* Abrundung der Ecken */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
 }
 
-#startButton:hover {
-    background-color: #0f7abd;
+#startButton:hover, #startButton:focus, #startButton:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    background-color: rgba(0, 136, 169, 0.8);
 }
 
 #startButtonText {

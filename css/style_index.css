@@ -54,17 +54,19 @@ body {
 
 .button-container a {
     text-decoration: none;
-    background-color: #24a0ed;
+    background-color: rgba(0, 136, 169, 1);
     color: white;
     padding: 10px 20px;
-    font-size: 30px;
+    font-size: 40px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     border: none;
     border-radius: 10px;
     cursor: pointer;
 }
 
 .button-container a:hover {
-    background-color: #0f7abd;
+    background-color: rgba(0, 136, 169, 0.8);
 }
 
 /* put the 2 sides over each other instead of next to each other, when screen gets too thin*/
