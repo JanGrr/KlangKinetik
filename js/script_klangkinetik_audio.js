@@ -182,8 +182,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let panvalue = (alpha-180)/180 // Range: -1 to 1
 
-            let debug = document.getElementById("debug");
-            debug.innerText("panValue: " + panValue);
+            let debug1 = document.getElementById("debug1");
+            let debug2 = document.getElementById("debug2");
+            debug1.innerText("panValue: " + panvalue);
 
             // e.g sound just left when turned right 90°
             if (panvalue >= -0.5 && panvalue <= 0.5) {
@@ -197,6 +198,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     music.volume = 1 - (-panvalue - 0.5);
                 }
             }
+            debug2.innerText("Laustärke: " + music.volume);
+
 
             switch (window.screen.orientation.type) {
 				case 'portrait-primary':
