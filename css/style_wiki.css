@@ -15,7 +15,7 @@ body {
     border: 1px solid transparent;
     padding: 30px;
     border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 9px 38px, rgba(0, 0, 0, 0.22) 0px 5px 12px;
     text-align: center;
     display: table;
     margin: 0 auto;

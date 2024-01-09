@@ -161,3 +161,9 @@ body {
 .wave:nth-child(13){
     animation-delay: 0s;
 }
+
+@media screen and (orientation: landscape) {
+    .header {
+        display: none;
+      }
+}
