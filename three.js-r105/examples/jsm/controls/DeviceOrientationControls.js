@@ -99,25 +99,33 @@ var DeviceOrientationControls = function ( object ) {
 			var beta = device.beta;
 			var gamma = device.gamma;
 
+
 			switch (window.screen.orientation.type) {
 				case 'portrait-primary':
+
 					debug.innerText = screen.orientation.type + ", alpha: " + alpha + ", beta: " + beta + ", gamma: " + gamma;
-					alpha = _Math.degToRad(alpha); // Z
-					beta = _Math.degToRad(beta);
-					gamma = _Math.degToRad(gamma);
+					alpha = _Math.degToRad(-90); // Z
+					beta = _Math.degToRad(100);
+					gamma = _Math.degToRad(0);
 					break;
 				case 'landscape-primary':
-					if (gamma < 0 && gamma >= -90) { // to bypass 'gimbal lock' problem of Euler angles
-						if (alpha < 180) {
-							alpha += 180;
-						} else {
-							alpha -= 180;
+					if (isMobile()) {
+						if (gamma < 0 && gamma >= -90) { // to bypass 'gimbal lock' problem of Euler angles
+							if (alpha < 180) {
+								alpha += 180;
+							} else {
+								alpha -= 180;
+							}
 						}
+
+						alpha = _Math.degToRad(alpha); // Z
+						beta = _Math.degToRad(180); // no movement in X-Axis and flip image 180°
+						gamma = _Math.degToRad(85); // 85 seems about right for the hight of the stage without allowing movement in Y-Axis
+					} else { // weirdly PC's are concidered 'landscape-primary'
+						alpha = _Math.degToRad(-90); // Z
+						beta = _Math.degToRad(100);
+						gamma = _Math.degToRad(0);
 					}
-	
-					alpha = _Math.degToRad(alpha); // Z
-					beta = _Math.degToRad(180); // no movement in X-Axis and flip image 180°
-					gamma = _Math.degToRad(85); // 85 seems about right for the hight of the stage without allowing movement in Y-Axis
 					break;
 				case 'landscape-secondary':
 					// image is being loaded exactly in opposite direction of the stage -> +180° to fix it
@@ -137,6 +145,8 @@ var DeviceOrientationControls = function ( object ) {
 					break;
 				case 'portrait-secondary':
 					break;
+				default:
+					console.log("10");
 			}
 
 		    // ------------------------------------------------------------------------------------------------------------
@@ -159,5 +169,10 @@ var DeviceOrientationControls = function ( object ) {
 	this.connect();
 
 };
+
+function isMobile() {
+	const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+	return regex.test(navigator.userAgent);
+}
 
 export { DeviceOrientationControls };
