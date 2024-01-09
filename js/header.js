@@ -2,11 +2,10 @@ class Header extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <header>
-                <a class="logo" href="../index.html">KlangKinetik</a>
                 <nav>
                     <ul class="nav-links">
-                        <li><a href="../index.html">Homepage</a></li>
-                        <li><a href="klangkinetik.html">Player</a></li>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="klangkinetik.html">KlangKinetik</a></li>
                     </ul>
                 </nav>
                 <a href="wiki.html"><button>Wiki</button></a>

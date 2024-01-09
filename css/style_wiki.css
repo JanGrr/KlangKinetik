@@ -2,6 +2,8 @@ body {
     /* background: linear-gradient(45deg,#0006ff,#a801ff); */
     background-color: #24252A;
     margin: 0;
+    margin-left: 10px;
+    margin-right: 10px;
     /* because body doesnt extend the full height of the screen */
     min-height: 98.4vh;
     color:#edf0f1;
@@ -9,7 +11,7 @@ body {
 }
 
 #main-container {
-    width: max-content;
+    width: auto;
     border: 1px solid transparent;
     padding: 30px;
     border-radius: 20px;
@@ -18,6 +20,7 @@ body {
     display: table;
     margin: 0 auto;
     margin-bottom: 50px;
+
 }
 
 #main-container h3{
@@ -59,3 +62,4 @@ body {
 #startButtonText {
     font-size: 25px;
 }
+
