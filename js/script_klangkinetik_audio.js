@@ -190,7 +190,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let debug1 = document.getElementById("debug1");
             let debug2 = document.getElementById("debug2");
-            debug1.innerText = "panValue: " + alpha;
 
             // e.g sound just left when turned right 90°
             if (alpha >= -0.5 && alpha <= 0.5) {
@@ -204,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     music.volume = 1 - (-alpha - 0.5);
                 }
             }
+            debug1.innerText = "panValue: " + alpha;
 
             switch (window.screen.orientation.type) {
 				case 'portrait-primary':
