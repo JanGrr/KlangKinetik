@@ -84,16 +84,16 @@ body {
 }
 
 #playButton {
-    background-color: #24a0ed; /* Hintergrundfarbe */
-    border: none; /* Kein Rand */
-    color: white; /* Textfarbe */
-    padding: 15px 32px; /* Innenabstand (oben/unten links/rechts) */
-    text-decoration: none; /* Keine Textunterstreichung */
+    background-color: #24a0ed;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
     display: inline-block;
-    font-size: 16px; /* Schriftgröße */
-    margin: 4px 2px; /* Außenabstand (oben/unten links/rechts) */
-    cursor: pointer; /* Zeiger-Cursor beim Überfahren */
-    border-radius: 8px; /* Abrundung der Ecken */
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
 .sound-waves {
@@ -114,6 +114,7 @@ body {
     margin: 0 5px;
     animation: animate 1.2s linear infinite;
 }
+
 @keyframes animate{
     50%{
         height: 20%;
@@ -162,7 +163,8 @@ body {
     animation-delay: 0s;
 }
 
-@media screen and (orientation: landscape) {
+/* remove header in landscape mode for more space*/
+@media screen and (max-width: 600px) and (orientation: landscape) {
     .header-container {
         display: none;
     }

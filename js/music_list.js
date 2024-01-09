@@ -1,3 +1,4 @@
+/* List of 5 songs to start with*/
 const music_list = [
     {
         songname : 'Freeloader',
