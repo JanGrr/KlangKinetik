@@ -181,6 +181,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             let panvalue = (alpha-180)/180 // Range: -1 to 1
+
+            let debug = document.getElementById("debug");
+            debug.innerText("panValue: " + panValue);
+
             // e.g sound just left when turned right 90°
             if (panvalue >= -0.5 && panvalue <= 0.5) {
                 panvalue *= -2;
