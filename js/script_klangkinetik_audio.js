@@ -180,32 +180,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            // Range: -1 to 1
-            if (alpha >= 0 && alpha <= 180) {
-                alpha = alpha / 180;
+         // Range: -1 to 1
+         if (alpha >= 0 && alpha <= 180) {
+            alpha = -alpha / 180;
+        } else {
+            alpha = 1 - ((alpha - 180)/180);
+        }
+         
+
+        let debug1 = document.getElementById("debug1");
+        let debug2 = document.getElementById("debug2");
+        debug1.innerText = "panValue: " + alpha;
+
+        // e.g sound just left when turned right 90°
+        if (alpha >= -0.5 && alpha <= 0.5) {
+            panNode.panvalue = alpha * -2;
+        } else {
+            if (alpha >= 0) {
+                panNode.panvalue = (-alpha + 1) * -2;
+                music.volume = 1 - (alpha - 0.5);
             } else {
-                alpha = 1 - ((alpha - 180)/180);
+                panNode.panvalue = (-alpha - 1) * -2;
+                music.volume = 1 - (-alpha - 0.5);
             }
-             
-
-            let debug1 = document.getElementById("debug1");
-            let debug2 = document.getElementById("debug2");
-            debug1.innerText = "panValue: " + alpha;
-
-            // e.g sound just left when turned right 90°
-            if (alpha >= -0.5 && alpha <= 0.5) {
-                alpha *= -2;
-            } else {
-                if (alpha >= 0) {
-                    alpha = (-alpha + 1) * -2;
-                    music.volume = 1 - (alpha - 0.5);
-                } else {
-                    alpha = (-alpha - 1) * -2;
-                    music.volume = 1 - (-alpha - 0.5);
-                }
-            }
-            debug2.innerText = "Laustärke: " + music.volume;
-
+        }
+        debug2.innerText = "Laustärke: " + music.volume;
 
             switch (window.screen.orientation.type) {
 				case 'portrait-primary':
