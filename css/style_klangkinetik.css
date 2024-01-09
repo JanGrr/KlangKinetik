@@ -164,7 +164,7 @@ body {
 }
 
 /* remove header in landscape mode for more space*/
-@media screen and (max-width: 600px) and (orientation: landscape) {
+@media screen and (orientation: landscape) {
     .header-container {
         display: none;
     }
