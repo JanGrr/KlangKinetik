@@ -95,29 +95,44 @@ var DeviceOrientationControls = function ( object ) {
 			// ------------------------- some changes done here, to just allow movement in Z-Axis -------------------------
 			const debug = document.getElementById('debug');
 			debug.innerText = screen.orientation.type;
-			switch (window.screen.orientation.type) {
-				case 0:
-				case 90:
-				case -90:
-			}
+
 			var alpha = device.alpha;
 			var beta = device.beta;
 			var gamma = device.gamma;
 
-			// image is being loaded exactly in opposite direction of the stage -> +180° to fix it
-			alpha += 180;
+			switch (window.screen.orientation.type) {
+				case 'portrait-primary':
+				case 'landscape-primary':
 
-			if (gamma < 0 && gamma >= -90) { // to bypass 'gimbal lock' problem of Euler angles
-				if (alpha < 180) {
+					if (gamma < 0 && gamma >= -90) { // to bypass 'gimbal lock' problem of Euler angles
+						if (alpha < 180) {
+							alpha += 180;
+						} else {
+							alpha -= 180;
+						}
+					}
+
+					alpha = _Math.degToRad(alpha); // Z
+					beta = _Math.degToRad(180); // no movement in X-Axis and turn image 90°
+					gamma = _Math.degToRad(95); // 95 seems about right for the hight of the stage without allowing movement in Y-Axis
+				case 'landscape-secondary':
+					// image is being loaded exactly in opposite direction of the stage -> +180° to fix it
 					alpha += 180;
-				} else {
-					alpha -= 180;
-				}
+
+					if (gamma < 0 && gamma >= -90) { // to bypass 'gimbal lock' problem of Euler angles
+						if (alpha < 180) {
+							alpha += 180;
+						} else {
+							alpha -= 180;
+						}
+					}
+					
+					alpha = _Math.degToRad(alpha); // Z
+					beta = _Math.degToRad(0); // no movement in X-Axis and turn image 90°
+					gamma = _Math.degToRad(95); // 95 seems about right for the hight of the stage without allowing movement in Y-Axis
+				case '':
+				default:
 			}
-			
-			alpha = _Math.degToRad(alpha); // Z
-			beta = _Math.degToRad(0) // no movement in X-Axis and turn image 90°
-			gamma = _Math.degToRad(95) // 95 seems about right for the hight of the stage without allowing movement in Y-Axis
 
 		    // ------------------------------------------------------------------------------------------------------------
 
