@@ -180,22 +180,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            let panvalue = (alpha-180)/180 // Range: -1 to 1
+            // Range: -1 to 1
+            if (alpha >= 0 && alpha <= 180) {
+                alpha = alpha / 180;
+            } else {
+                alpha = 1 - ((alpha - 180)/180);
+            }
+             
 
             let debug1 = document.getElementById("debug1");
             let debug2 = document.getElementById("debug2");
-            debug1.innerText = "panValue: " + panvalue;
+            debug1.innerText = "panValue: " + alpha;
 
             // e.g sound just left when turned right 90°
-            if (panvalue >= -0.5 && panvalue <= 0.5) {
-                panvalue *= -2;
+            if (alpha >= -0.5 && alpha <= 0.5) {
+                alpha *= -2;
             } else {
-                if (panvalue >= 0) {
-                    panvalue = (-panvalue + 1) * -2;
-                    music.volume = 1 - (panvalue - 0.5);
+                if (alpha >= 0) {
+                    alpha = (-alpha + 1) * -2;
+                    music.volume = 1 - (alpha - 0.5);
                 } else {
-                    panvalue = (-panvalue - 1) * -2;
-                    music.volume = 1 - (-panvalue - 0.5);
+                    alpha = (-alpha - 1) * -2;
+                    music.volume = 1 - (-alpha - 0.5);
                 }
             }
             debug2.innerText = "Laustärke: " + music.volume;
