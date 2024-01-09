@@ -94,7 +94,6 @@ var DeviceOrientationControls = function ( object ) {
 
 			// ------------------------- some changes done here, to just allow movement in Z-Axis -------------------------
 			const debug = document.getElementById('debug');
-			debug.innerText = screen.orientation.type;
 
 			var alpha = device.alpha;
 			var beta = device.beta;
@@ -111,7 +110,7 @@ var DeviceOrientationControls = function ( object ) {
 							alpha -= 180;
 						}
 					}
-
+					debug.innerText = screen.orientation.type + ", alpha: " + alpha + ", beta: " + beta + ", gamma: " + gamma;
 					alpha = _Math.degToRad(alpha); // Z
 					beta = _Math.degToRad(180); // no movement in X-Axis and turn image 90°
 					gamma = _Math.degToRad(95); // 95 seems about right for the hight of the stage without allowing movement in Y-Axis
@@ -130,8 +129,7 @@ var DeviceOrientationControls = function ( object ) {
 					alpha = _Math.degToRad(alpha); // Z
 					beta = _Math.degToRad(0); // no movement in X-Axis and turn image 90°
 					gamma = _Math.degToRad(95); // 95 seems about right for the hight of the stage without allowing movement in Y-Axis
-				case '':
-				default:
+				case 'portrait-secondary':
 			}
 
 		    // ------------------------------------------------------------------------------------------------------------
