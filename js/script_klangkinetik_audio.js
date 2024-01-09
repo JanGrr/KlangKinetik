@@ -197,10 +197,10 @@ document.addEventListener('DOMContentLoaded', function() {
             panNode.panvalue = alpha * -2;
         } else {
             if (alpha >= 0) {
-                panNode.panvalue = (-alpha + 1) * -2;
+                alpha = (-alpha + 1) * -2;
                 music.volume = 1 - (alpha - 0.5);
             } else {
-                panNode.panvalue = (-alpha - 1) * -2;
+                alpha = (-alpha - 1) * -2;
                 music.volume = 1 - (-alpha - 0.5);
             }
         }
@@ -210,10 +210,10 @@ document.addEventListener('DOMContentLoaded', function() {
 				case 'portrait-primary':
 					break;
 				case 'landscape-primary':
-                    panNode.pan.value = -panvalue; // invert
+                    panNode.pan.value = -alpha; // invert
 					break;
 				case 'landscape-secondary':
-                    panNode.pan.value = panvalue;
+                    panNode.pan.value = alpha;
                     break
 			}
         }
