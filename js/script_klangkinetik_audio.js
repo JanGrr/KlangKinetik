@@ -167,7 +167,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     panvalue = (-panvalue - 1) * -2
                 }
             }
-            panNode.pan.value = panvalue;
+            switch (window.screen.orientation.type) {
+				case 'portrait-primary':
+					break;
+				case 'landscape-primary':
+                    panNode.pan.value = -panvalue;
+					break;
+				case 'landscape-secondary':
+                    panNode.pan.value = panvalue;
+                    break
+			}
         }
     }
 });
