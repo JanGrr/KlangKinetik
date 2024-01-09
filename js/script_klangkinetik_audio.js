@@ -194,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // e.g sound just left when turned right 90°
             if (alpha >= -0.5 && alpha <= 0.5) {
                 alpha = alpha * -2;
+                debug1.innerText = "zw. -05 & 0.5: " + alpha;
             } else {
                 if (alpha >= 0) {
                     alpha = (-alpha + 1) * -2;
@@ -202,8 +203,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     alpha = (-alpha - 1) * -2;
                     music.volume = 1 - (-alpha - 0.5);
                 }
+                debug2.innerText = "rest: " + alpha;
             }
-            debug1.innerText = "panValue: " + alpha;
 
             switch (window.screen.orientation.type) {
 				case 'portrait-primary':
@@ -215,7 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     panNode.pan.value = alpha;
                     break
 			}
-            debug2.innerText = "panNode: " + panNode.pan.value;
         }
     }
 });
