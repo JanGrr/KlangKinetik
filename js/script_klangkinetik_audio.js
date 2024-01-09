@@ -186,17 +186,12 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 alpha = 1 - ((alpha - 180)/180);
             }
-         
-
-            let debug1 = document.getElementById("debug1");
-            let debug2 = document.getElementById("debug2");
 
             // e.g sound just left when turned right 90°
             if (alpha >= -0.5 && alpha <= 0.5) {
                 alpha = alpha * -2;
             } else {
                 if (alpha >= 0) {
-                    debug1.innerText = "Jetzt";
                     music.volume = 1 - (alpha - 0.5);
                     alpha = (-alpha + 1) * -2;
                 } else {
@@ -204,7 +199,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     alpha = (-alpha - 1) * -2;
                 }
             }
-            debug2.innerText = "Laustärke: " + music.volume;
 
             switch (window.screen.orientation.type) {
 				case 'portrait-primary':
