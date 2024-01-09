@@ -15,11 +15,3 @@ class Header extends HTMLElement {
 }
 
 customElements.define('header-container', Header)
-
-/*
-            <p>
-                <a href="../index.html">Homepage</a>
-                <a href="wiki.html">Wiki</a>
-                <a href="klangkinetik.html">KlangKinetik</a>
-            </p>
-*/
