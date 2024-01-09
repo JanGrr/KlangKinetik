@@ -5,7 +5,7 @@ class Header extends HTMLElement {
                 <nav>
                     <ul class="nav-links">
                         <li><a href="../index.html">Home</a></li>
-                        <li><a href="klangkinetik.html">KlangKinetik</a></li>
+                        <li><a href="klangkinetik.html">Player</a></li>
                     </ul>
                 </nav>
                 <a href="wiki.html"><button>Wiki</button></a>
