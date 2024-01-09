@@ -163,7 +163,7 @@ body {
 }
 
 @media screen and (orientation: landscape) {
-    header {
+    .header-container {
         display: none;
     }
 }
