@@ -112,8 +112,10 @@ var DeviceOrientationControls = function ( object ) {
 					}
 					debug.innerText = screen.orientation.type + ", alpha: " + alpha + ", beta: " + beta + ", gamma: " + gamma;
 					alpha = _Math.degToRad(alpha); // Z
-					beta = _Math.degToRad(180); // no movement in X-Axis and turn image 90°
-					gamma = _Math.degToRad(95); // 95 seems about right for the hight of the stage without allowing movement in Y-Axis
+					beta = _Math.degToRad(beta);
+					gamma = _Math.degToRad(gamma);
+					//beta = _Math.degToRad(180); // no movement in X-Axis and turn image 90°
+					//gamma = _Math.degToRad(95); // 95 seems about right for the hight of the stage without allowing movement in Y-Axis
 				case 'landscape-secondary':
 					// image is being loaded exactly in opposite direction of the stage -> +180° to fix it
 					alpha += 180;
