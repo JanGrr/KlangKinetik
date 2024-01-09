@@ -45,3 +45,21 @@ button {
 button:hover {
     background-color: rgba(0, 136, 169, 0.8);
 }
+
+/* make sure header fits even when screen gets really thin */
+@media screen and (max-width: 1000px) and (orientation: portrait) {
+    header {
+        padding: 15px 0px 15px 0px;
+        justify-content: space-evenly;
+    }
+
+    .nav-links li {
+        display: inline-block;
+        padding: 0px 10px;
+    }
+
+    button {
+        padding: 7px 20px;
+        margin-left: 0px;
+    }
+}
