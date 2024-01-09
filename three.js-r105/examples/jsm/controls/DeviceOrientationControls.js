@@ -92,24 +92,21 @@ var DeviceOrientationControls = function ( object ) {
 
 		if ( device ) {
 
-			// ------------------------- some changes done here, to just allow movement in Z-Axis -------------------------
-			const debug = document.getElementById('debug');
+			// ---------------------------- changes done here, to just allow movement in Z-Axis ----------------------------
 
 			var alpha = device.alpha;
 			var beta = device.beta;
 			var gamma = device.gamma;
 
-
 			switch (window.screen.orientation.type) {
-				case 'portrait-primary':
-
-					debug.innerText = screen.orientation.type + ", alpha: " + alpha + ", beta: " + beta + ", gamma: " + gamma;
-					alpha = _Math.degToRad(-90); // Z
-					beta = _Math.degToRad(100);
-					gamma = _Math.degToRad(0);
+				case 'portrait-primary': // make image static in portrait mode (just using sensors in landscape mode)
+					// sweetspot values to see the stage
+					alpha = _Math.degToRad(-90); // Z-Axis
+					beta = _Math.degToRad(95); // X-Axis
+					gamma = _Math.degToRad(0); // Y-Axis
 					break;
 				case 'landscape-primary':
-					if (isMobile()) {
+					if (isMobile()) { // To differentiate between PC and phone
 						if (gamma < 0 && gamma >= -90) { // to bypass 'gimbal lock' problem of Euler angles
 							if (alpha < 180) {
 								alpha += 180;
@@ -118,11 +115,12 @@ var DeviceOrientationControls = function ( object ) {
 							}
 						}
 
-						alpha = _Math.degToRad(alpha); // Z
+						alpha = _Math.degToRad(alpha); // Movement in Z-Axis depending on phone sensor
 						beta = _Math.degToRad(180); // no movement in X-Axis and flip image 180°
 						gamma = _Math.degToRad(85); // 85 seems about right for the hight of the stage without allowing movement in Y-Axis
 					} else { // weirdly PC's are concidered 'landscape-primary'
-						alpha = _Math.degToRad(-90); // Z
+						// static image for PC users too, because of the missing sensor
+						alpha = _Math.degToRad(-90);
 						beta = _Math.degToRad(100);
 						gamma = _Math.degToRad(0);
 					}
@@ -139,14 +137,13 @@ var DeviceOrientationControls = function ( object ) {
 						}
 					}
 					
-					alpha = _Math.degToRad(alpha); // Z
-					beta = _Math.degToRad(0); // no movement in X-Axis
+					alpha = _Math.degToRad(alpha);
+					beta = _Math.degToRad(0);
 					gamma = _Math.degToRad(95);
 					break;
 				case 'portrait-secondary':
+					// if phone is on its head
 					break;
-				default:
-					console.log("10");
 			}
 
 		    // ------------------------------------------------------------------------------------------------------------
@@ -170,6 +167,7 @@ var DeviceOrientationControls = function ( object ) {
 
 };
 
+// checks if user is on a mobile device
 function isMobile() {
 	const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
 	return regex.test(navigator.userAgent);

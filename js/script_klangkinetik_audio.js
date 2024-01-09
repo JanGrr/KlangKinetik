@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let prevSong = document.getElementById("prev-song-container");
     let curr_song_time = document.getElementById("current-song-time");
     let total_song_duration = document.getElementById("total-song-duration");
+
+    // tells which song out of musicList is playing
     let song_index = 0;
 
     //load website without soundwaves
@@ -29,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     nextSong.addEventListener('click', nextTrack);
     prevSong.addEventListener('click', prevTrack);
 
+    // To start and pause music
     function toggleAudio() {
         if (!isMusicInitialized) {
             initAudio();
@@ -51,7 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Change the time of the song when user uses the progress slider
     progress.onchange = function(){
+        // if user uses progress slider before hitting play a single time
         if (!isMusicInitialized) {
             initAudio();
             isMusicInitialized = true;
@@ -64,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         playpauseIcon.classList.add("fa-pause");
     }
 
+    // Initializes Audio and creates StereoPanner for 360 Sound
     function initAudio() {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
         panNode = audioContext.createStereoPanner();
@@ -72,21 +78,23 @@ document.addEventListener('DOMContentLoaded', function() {
         source.connect(panNode);
         panNode.connect(audioContext.destination);
 
-        music.addEventListener('loadedmetadata', function() {
+        music.addEventListener('loadedmetadata', function() { // waiting untill audio initialization finished
             // initialize progress Bar
             progress.max = music.duration;
             progress.value = music.currentTime;
-    
+            
+            // show duration of song
             let durationMinutes = Math.floor(music.duration / 60);
             let durationSeconds = Math.floor(music.duration % 60);
             if (durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
             if (durationMinutes < 10) { durationMinutes = "0" + durationMinutes; }
-            
+
             total_song_duration.textContent = durationMinutes + ":" + durationSeconds;
         });
     
-        music.addEventListener('ended', nextTrack);
+        music.addEventListener('ended', nextTrack); // play next song when song is finished
 
+        //update current sing time and progress slider periodically
         setInterval(()=>{
             progress.value = music.currentTime;
             let currentMinutes = Math.floor(music.currentTime / 60);
@@ -97,36 +105,49 @@ document.addEventListener('DOMContentLoaded', function() {
         },500);
     }
 
+    // Plays next song
     function nextTrack(){
+        // no action if play wasnt hit a single time yet
         if (isMusicInitialized) {
+            // stop current song
             if (isMusicPlaying) {music.pause();}
+            // update song_index
             if(song_index < (musicList.length - 1)){
                 song_index += 1;
             } else {
                 song_index = 0;
             }
-            initAudio();
+            
+            initAudio(); // Initialize new song
+            // play new song
             playpauseIcon.classList.remove("fa-play");
             playpauseIcon.classList.add("fa-pause")
             music.play();
         }
     }
 
+    // Plays previous song
     function prevTrack(){
+        // no action if play wasnt hit a single time yet
         if (isMusicInitialized) {
+            // stop current song
             if (isMusicPlaying) {music.pause();}
+            // update song_index
             if(song_index > 0){
                 song_index -= 1;
             } else {
                 song_index = musicList.length - 1;
             }
-            initAudio();
+            
+            initAudio(); // Initialize new song
+            // play new song
             playpauseIcon.classList.remove("fa-play");
             playpauseIcon.classList.add("fa-pause")
             music.play();
         }
     }
 
+    // Starts soundwave animation
     function startSoundwaves() {
         soundWaves.forEach(wave => {
             wave.style.animationPlayState = 'running';
@@ -134,15 +155,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Stopps soundwave animation
     function stopSoundwaves() {
         soundWaves.forEach(wave => {
             wave.style.animationPlayState = 'paused';
-            wave.style.height = '10%';
+            wave.style.height = '10%';  // weirdly isnt applied to every wave
         });
     }
 
     window.addEventListener('deviceorientation', handleOrientation);
 
+    // adjusts sound direction to sensor data
     function handleOrientation(event) {
         if(isMusicPlaying) {
             let alpha = event.alpha; // Z-Rotation 
@@ -157,7 +180,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            let panvalue = (alpha-180)/180 // Bereich: -1 bis 1
+            let panvalue = (alpha-180)/180 // Range: -1 to 1
+            // e.g sound just left when turned right 90°
             if (panvalue >= -0.5 && panvalue <= 0.5) {
                 panvalue *= -2;
             } else {
@@ -167,11 +191,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     panvalue = (-panvalue - 1) * -2
                 }
             }
+
             switch (window.screen.orientation.type) {
 				case 'portrait-primary':
 					break;
 				case 'landscape-primary':
-                    panNode.pan.value = -panvalue;
+                    panNode.pan.value = -panvalue; // invert
 					break;
 				case 'landscape-secondary':
                     panNode.pan.value = panvalue;
