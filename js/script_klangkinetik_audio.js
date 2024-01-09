@@ -192,16 +192,16 @@ document.addEventListener('DOMContentLoaded', function() {
             let debug2 = document.getElementById("debug2");
 
             // e.g sound just left when turned right 90°
+            debug1.innerText = "Beginn: " + alpha;
             if (alpha >= -0.5 && alpha <= 0.5) {
                 alpha = alpha * -2;
-                debug1.innerText = "zw. -05 & 0.5: " + alpha;
             } else {
                 if (alpha >= 0) {
-                    alpha = (-alpha + 1) * -2;
                     music.volume = 1 - (alpha - 0.5);
+                    alpha = (-alpha + 1) * -2;
                 } else {
-                    alpha = (-alpha - 1) * -2;
                     music.volume = 1 - (-alpha - 0.5);
+                    alpha = (-alpha - 1) * -2;
                 }
                 debug2.innerText = "rest: " + alpha;
             }
