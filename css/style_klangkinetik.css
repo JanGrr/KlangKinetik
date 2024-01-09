@@ -166,4 +166,8 @@ body {
     .header-container {
         display: none;
     }
+
+    #stage-container {
+        margin-top: 20px;
+    }
 }

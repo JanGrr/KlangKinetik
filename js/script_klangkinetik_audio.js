@@ -186,9 +186,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 panvalue *= -2;
             } else {
                 if (panvalue >= 0) {
-                    panvalue = (-panvalue + 1) * -2
+                    panvalue = (-panvalue + 1) * -2;
+                    music.volume = 1 - (panvalue - 0.5);
                 } else {
-                    panvalue = (-panvalue - 1) * -2
+                    panvalue = (-panvalue - 1) * -2;
+                    music.volume = 1 - (-panvalue - 0.5);
                 }
             }
 
