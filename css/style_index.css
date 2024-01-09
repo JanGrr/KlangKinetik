@@ -1,10 +1,16 @@
+html{
+    /* workaround to fix viewport-problem for mobile devices*/
+    height: 100%;
+}
+
 body {
     margin: 0;
+    height: 100%;
 }
 
 .main-container {
     display: flex;
-    height: 100vh;
+    height: 100%;
 }
 
 .main-container .text-container {
