@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // e.g sound just left when turned right 90°
             if (alpha >= -0.5 && alpha <= 0.5) {
-                panNode.panvalue = alpha * -2;
+                alpha = alpha * -2;
             } else {
                 if (alpha >= 0) {
                     alpha = (-alpha + 1) * -2;
