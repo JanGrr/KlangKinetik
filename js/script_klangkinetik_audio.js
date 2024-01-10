@@ -171,6 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let alpha = event.alpha; // Z-Rotation 
             //const beta = event.beta;   // X-Rotation not used
             const gamma = event.gamma; // Y-Rotation
+            let music;
     
             if (gamma < 0 && gamma >= -90) { // to bypass 'gimbal lock' problem of Euler angles
                 if (alpha < 180) {
@@ -192,11 +193,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 alpha = alpha * -2;
             } else {
                 if (alpha >= 0) {
-                    music.volume = 1 - (alpha - 0.5);
+                    music = 1 - (alpha - 0.5);
                     alpha = (-alpha + 1) * -2;
                 } else {
-                    music.volume = 1 - (-alpha - 0.5);
-                    alpha = (-alpha - 1) * -2;
+                    music = 1 - (-alpha - 0.5);
+                    music = (-alpha - 1) * -2;
                 }
             }
 
@@ -205,9 +206,11 @@ document.addEventListener('DOMContentLoaded', function() {
 					break;
 				case 'landscape-primary':
                     panNode.pan.value = -alpha; // invert
+                    music.volume = -music;
 					break;
 				case 'landscape-secondary':
                     panNode.pan.value = alpha;
+                    music.volume = music;
                     break
 			}
         }
