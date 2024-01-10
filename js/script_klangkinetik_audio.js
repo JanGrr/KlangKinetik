@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     alpha = (-alpha + 1) * -2;
                 } else {
                     music = 1 - (-alpha - 0.5);
-                    music = (-alpha - 1) * -2;
+                    alpha = (-alpha - 1) * -2;
                 }
             }
 
